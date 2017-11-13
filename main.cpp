@@ -14,6 +14,7 @@ int main ()
 //get input
 	int n;
 	cin>>n;
+//function
 	cout<<fact(n);
 	return 0;
 }
