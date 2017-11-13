@@ -10,7 +10,7 @@ int fact(int n , int i=1)
 }
 int main ()
 {
-	int n;
+	int n,m;
 	cin>>n;
 	cout<<fact(n);
 	return 0;
