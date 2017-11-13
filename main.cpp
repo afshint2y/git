@@ -1,11 +1,12 @@
 #include <iostream>
 using namespace std;
-int fact(int n)
+int c=1;
+int fact(int n , int i=1)
 {
-	int c=1;
-	for(int i=1 ;i<=n; i ++)
-		c*=i;
-	return c;
+	if(i==n)
+		return c;
+	c*=i;
+	return fact(n,i++);
 }
 int main ()
 {
