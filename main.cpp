@@ -11,6 +11,7 @@ int fact(int n ,int i=1)
 }
 int main ()
 {
+//get n
 	int n;
 	cin>>n;
 	cout<<fact(n);
