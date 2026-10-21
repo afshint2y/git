@@ -1625,7 +1625,9 @@ body.on-ink .hb-menu a.on{color:#12110D!important}
 .t-stub{position:relative}
 .more-h{padding:16px 0;font-size:var(--t-small)!important;line-height:1.4!important}
 /* a simple, friendly smiley: gentle float and blink, no spin */
-.smiley.cute svg{animation:smFloat 4.5s ease-in-out infinite!important}
+.smiley.cute svg{animation:none!important}
+.nac{gap:8px!important}
+.nac .smiley.cute{width:1.25em;height:1.25em;transform:none!important}
 @media (prefers-reduced-motion:reduce){.smiley.cute svg{animation:none!important}}
 #investment .more .spec dt,#investment .more .spec dd{border-top:0!important;padding-top:0!important}
 .t-hint{position:absolute;left:clamp(18px,2vw,28px);top:24px;font-size:12px;font-weight:500;text-transform:uppercase;color:#5E5E5A;opacity:0;transition:opacity .3s;pointer-events:none}
@@ -1898,7 +1900,7 @@ const PROPOSAL = {
     ['Intellectual property','Full rights to the final approved work transfer to Pocky Group AB once the final payment is received.'],
     ['Third-party costs','Printing and production are paid by Pocky at cost.'],
     ['Proposal validity','10 days from the date of this proposal.'],
-    ['Sharing the work','We may share the finished work in our portfolio and on social media, and we coordinate the timing with you before we share it.']],
+    ['Sharing the work','We may share the finished work in our portfolio and on social media, and we coordinate the timing with you before we share it. If you have any concerns about sharing the work in our portfolio, let us know beforehand.']],
 
   start:{ earliest:'3 November 2026', status:'Fully available' },
 
