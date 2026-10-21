@@ -1,8 +1,6 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Pocky Proposal</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap">
+<link rel="preload" href="fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 /* Heli Studio proposal system.
    Layout: Heli slide grammar on the web — corner meta pinned to the viewport, a header row (title left, line right),
@@ -1661,6 +1659,58 @@ body.on-ink .hb-menu a.on{color:#12110D!important}
 :root{--lime:#FDF451;--yg:#FDF451}
 .cta,.t-stub,.bt-stub,.sol .k,.sol-head .k,.proj-h span,.ph-body .gate,.facts .accent,.bub,.pkg[aria-pressed="true"] .stub,.bar.done,.hb-menu a.on{box-shadow:none!important}
 .total .row.credit b,.total .row.credit b:last-child{background:#FDF451!important;box-shadow:none!important;border-radius:0!important;padding:0 .2em!important}
+
+/* ════ heli.studio typography ════
+   Taken from the site's build (css/index-*.css and the rendered pages): Inter Variable, self-hosted, no stylistic sets;
+   140% line height throughout; two weights, 400 for text and links, 500 for headings, labels and buttons;
+   -4% tracking on headings; 12px medium uppercase labels; fluid button and heading sizes in rem, vw and dvh. */
+@font-face{font-family:"Inter Variable";font-style:normal;font-display:swap;font-weight:100 900;src:url("fonts/inter-latin-wght-normal.woff2")format("woff2-variations");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Inter;font-style:normal;font-display:swap;font-weight:100 900;src:url("fonts/inter-latin-wght-normal.woff2")format("woff2-variations");unicode-range:U+??,U+131,U+152-153,U+2BB-2BC,U+2C6,U+2DA,U+2DC,U+304,U+308,U+329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{
+  --font:"Inter Variable",ui-sans-serif,system-ui,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  --hs-h2:clamp(1rem,.95rem + .7vw + .85dvh,2.4rem);      /* h2: text-[clamp(...)] leading-[140%] font-medium tracking-[-4%] */
+  --hs-btn:clamp(.75rem,.5rem + .2vw + .25dvh,1rem);      /* buttons and tabs: leading-[140%] font-medium uppercase */
+  --hs-lead:min(1.75rem,7.18vw);                           /* statements: text-[min(1.75rem,7.18vw)]/[160%] md:text-[2.25rem]/[160%] */
+  --hs-track:-.04em;
+}
+@media (min-width:768px){:root{--hs-lead:2.25rem}}
+body{font-family:var(--font);font-feature-settings:normal;letter-spacing:normal;line-height:1.4}
+button,input,textarea{font-feature-settings:inherit;letter-spacing:inherit}
+
+/* headings */
+h1,h2,h3,h4,.lead,.nx-t,.und-h,.team-lead,.closing h2{font-weight:500!important;letter-spacing:var(--hs-track)!important}
+h3,h4{line-height:1.4}
+.sh h2{font-size:var(--hs-h2)!important;line-height:1.4!important;text-transform:none!important;max-width:28ch}
+.lead,.ch2 .lead,.ch2:has(.und) .lead,.team-lead,.closing h2,.persp .lead{font-size:var(--hs-lead)!important;line-height:1.6!important}
+.team-lead b{font-weight:500}
+.cover h1,.nx-t{line-height:1!important}
+.und-h,.obj h3,.sol .svc h3,.persp .cols h3,.team h3,.term h3,.collab h3,.drawer h3,.modal h3,.pkg .tk-h h3{text-transform:none!important;line-height:1.4!important}
+
+/* text: 400, 140% */
+.body,.sh .q,.cv-desc,.persp .cols p.t,.obj p,.sol .need,.sol .out,.sol .svc p,.td,.ph-body .purpose,.case .c-out,.spec dd,.term .tv,
+.und-l li,.collab li,.scope-grid li,.pkg li,.glance-rows p:last-child,.nsteps .v,.contacts .v,.sol .seq,.modal .fine,.total .note{line-height:1.4!important}
+
+/* labels: text-xs/[140%] font-medium uppercase */
+.k,.dark .k,.eyebrow,.spec dt,.ph-body .dt,.cover .meta p:first-child,.sf,.sf b,.sf .sf-st,.sf .pg,.hsf-cols h3,.span-lab b,.cl-brand,
+.bub,.ph-body .gate,.ap-tag,.proj-h span,.startcard .avail,.case .cap span,.wk-head button,.bar,.tbc{
+  font-size:12px!important;font-weight:500!important;line-height:1.4!important;text-transform:uppercase!important;letter-spacing:normal!important}
+.bub small{font-size:11px;font-weight:400;text-transform:none}
+
+/* buttons and tabs */
+.tabs button,.btn,.case .open,.glass-btn-footer,.copy,.board .hint button{font-size:var(--hs-btn)!important;font-weight:500!important;line-height:1.4!important;text-transform:uppercase;letter-spacing:normal!important}
+
+/* nav pill and menu, as on the site: 12px medium uppercase name, 14px regular links */
+.hb-btn{font-size:12px!important;font-weight:500!important;letter-spacing:normal!important}
+.hb-menu a{font-size:14px!important;font-weight:400!important;line-height:1.4!important}
+.hb-soc a,.hb-mail{font-size:12px!important;font-weight:400!important}
+
+/* footer links: text-sm/[140%], socials text-xs */
+.hsf-cols ul{font-size:14px;line-height:1.4}
+.hsf-bot,.hsf-bot .hsf-mark{font-size:12px!important;line-height:1.4}
+.hsf-lead h2{font-size:var(--hs-h2)!important;line-height:1.4!important}
+
+/* figures keep weight 400 with heading tracking */
+.creds .n,.facts .v,.t-stub .amt,.tc-amt,.amt,.startcard .date,.pkg .stub{letter-spacing:var(--hs-track)!important}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="fibp" x="-2%" y="-1%" width="104%" height="102%"><feTurbulence type="fractalNoise" baseFrequency="1.2 .06" numOctaves="2" seed="9"/><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter></defs><symbol id="lg" viewBox="0 0 48 43"><path d="M42.2579 15.7705L36.2777 15.8047C35.7697 15.8073 35.2854 15.6104 35.0221 15.1536C34.7563 14.6954 34.8327 14.1743 35.088 13.7384L38.1031 8.59378C39.6889 5.85408 38.7479 2.35036 36.0013 0.768505C33.2547 -0.813353 29.7421 0.125259 28.1561 2.86496L25.195 8.04768C24.9436 8.48745 24.5304 8.8064 24.0026 8.8064C23.4723 8.8064 23.0577 8.47957 22.8063 8.04112L19.8465 2.86365C18.2606 0.125259 14.7479 -0.813353 12 0.768505C9.25337 2.35036 8.31235 5.85408 9.89819 8.59378L12.9173 13.7424C13.174 14.1795 13.2437 14.6967 12.9805 15.1523C12.7146 15.6104 12.2237 15.806 11.7184 15.8021L5.74336 15.7705C2.57162 15.7705 0 18.3356 0 21.4994C0 24.6618 2.57162 27.2282 5.74336 27.2282L11.7236 27.1941C12.2316 27.1914 12.7159 27.3883 12.9792 27.8452C13.245 28.3033 13.1686 28.8245 12.9134 29.2603L9.89819 34.405C8.31235 37.1447 9.25337 40.6484 12 42.2302C14.7466 43.8121 18.2593 42.8735 19.8452 40.1338L22.8063 34.9511C23.0577 34.5113 23.471 34.1923 23.9987 34.1923C24.529 34.1923 24.9436 34.5192 25.195 34.9576L28.1548 40.1351C29.7407 42.8748 33.2534 43.8134 36 42.2315C38.7466 40.6497 39.6876 37.146 38.1018 34.4063L35.0827 29.2577C34.826 28.8206 34.7563 28.3033 35.0195 27.8478C35.2854 27.3896 35.7763 27.1941 36.2816 27.198L42.2566 27.2295C45.4284 27.2295 48 24.6644 48 21.5007C48 18.3383 45.4284 15.7719 42.2566 15.7719L42.2579 15.7705ZM32.1083 24.6526C32.1083 24.6526 32.1492 24.713 32.1557 24.7235C32.4426 25.1593 32.4794 25.7383 32.1992 26.2213C31.9267 26.6913 31.4266 26.9485 30.9173 26.9328C30.9173 26.9328 30.8357 26.9289 30.8186 26.9263C29.725 26.8554 28.5997 27.0956 27.5797 27.6838C26.569 28.2666 25.8017 29.1094 25.316 30.0795C25.316 30.0795 25.2845 30.1451 25.2792 30.1557C25.0449 30.6216 24.5594 30.9432 24 30.9432C23.4551 30.9432 22.9814 30.6387 22.7405 30.1924C22.7405 30.1924 22.7037 30.1201 22.6971 30.1031C22.2115 29.1238 21.4402 28.2718 20.4203 27.685C19.4095 27.1035 18.2935 26.8619 17.209 26.9276C17.209 26.9276 17.1353 26.9328 17.1235 26.9342C16.601 26.9644 16.0798 26.7058 15.8008 26.2226C15.5284 25.7527 15.556 25.1922 15.8232 24.7589C15.8232 24.7589 15.868 24.6907 15.8785 24.6763C16.4865 23.7665 16.8405 22.6756 16.8405 21.5007C16.8405 20.3363 16.4918 19.252 15.893 18.3475C15.893 18.3475 15.8522 18.287 15.8456 18.2766C15.5574 17.8408 15.5219 17.2618 15.8022 16.7788C16.0746 16.3088 16.5747 16.0515 17.084 16.0672C17.084 16.0672 17.1656 16.0712 17.1827 16.0738C18.2764 16.1447 19.4016 15.9044 20.4216 15.3163C21.4323 14.7335 22.1996 13.8907 22.6853 12.9206C22.6853 12.9206 22.7168 12.8549 22.7221 12.8445C22.9564 12.3784 23.4419 12.0568 24.0013 12.0568C24.5462 12.0568 25.0199 12.3614 25.2608 12.8077C25.2608 12.8077 25.2977 12.8799 25.3056 12.897C25.7912 13.8763 26.5624 14.7282 27.5824 15.3151C28.5931 15.8966 29.7091 16.1382 30.7936 16.0725C30.7936 16.0725 30.8673 16.0672 30.8792 16.0659C31.4016 16.0357 31.9228 16.2943 32.2018 16.7774C32.4742 17.2474 32.4466 17.8079 32.1794 18.2411C32.1794 18.2411 32.1346 18.3094 32.1241 18.3239C31.5161 19.2336 31.1621 20.3245 31.1621 21.4994C31.1621 22.6638 31.5108 23.7481 32.1096 24.6526H32.1083Z"/></symbol></svg>
