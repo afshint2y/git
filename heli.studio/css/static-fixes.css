@@ -1,0 +1,18 @@
+/* Overrides for the static snapshot: the original app bundle that animated and
+   laid out these elements at runtime is not included. */
+
+/* JS-driven custom cursor would otherwise sit stuck in the top-left corner. */
+.glass-cursor { display: none !important; }
+
+/* Works page: reveal the hero and lay the case-study cards out as a scrollable row. */
+[data-analytics-section="hero"] [style*="opacity:0"],
+[data-analytics-section="hero"] [style*="opacity: 0"] {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+[data-analytics-section="hero"] h2 { transform: none !important; translate: none !important; }
+[data-analytics-section="hero"] .select-none { overflow-x: auto; scrollbar-width: thin; }
+[data-analytics-section="hero"] .will-change-\[width\,height\] {
+  width: clamp(9rem, 14vw, 14rem);
+  height: clamp(13rem, 21vw, 21rem);
+}
