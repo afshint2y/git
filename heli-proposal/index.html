@@ -1613,6 +1613,11 @@ body.on-ink .hb-menu a.on{color:#12110D!important}
 .cases.c-3{grid-template-columns:repeat(3,minmax(0,1fr))}
 .cases.c-3 .case .open{white-space:nowrap;flex:none}
 .scope-grid li:last-child{border-bottom:0}
+/* total ticket stub in black instead of yellow */
+.t-perf{background:radial-gradient(circle,#FDFDFC 5.5px,transparent 6px) 13px 50%/26px 24px repeat-x,linear-gradient(180deg,#F7F7F7 50%,transparent 50%),var(--ink)!important}
+.t-stub{background:var(--ink)!important;color:#fff!important}
+.t-stub .k,.t-stub>span:first-child{color:#A9A9A3!important}
+.t-stub s,.t-stub del{color:#77776F!important}
 .case .c-out{font-size:var(--t-small);color:var(--text-2);max-width:40ch}
 .drawer .panel .frame+.frame{margin-top:-12px}
 .team-lead{font-size:var(--t-h2);font-weight:450;letter-spacing:-.035em;line-height:1.2;max-width:none;text-wrap:balance}
@@ -1809,7 +1814,7 @@ const PROPOSAL = {
   /* services: id, pricing and scope. `requires` lists services this one cannot exist without.
      `after` starts a service at that week when the named service is also selected. */
   services:[
-    { id:'identity', name:'Visual Identity', short:'Identity', price:4200, weeks:6, requires:[],
+    { id:'identity', name:'Visual Identity', short:'Identity', price:5000, weeks:6, requires:[],
       summary:'A complete brand system for Pocky\'s next stage.',
       need:'A look built for a younger, adult Scandinavian audience.',
       outcome:'A recognisable identity with clear rules for every touchpoint.',
@@ -1819,7 +1824,7 @@ const PROPOSAL = {
       deliverables:[['2 logo alternatives'],['Colour palette & typography system'],['Graphic language & patterns'],['Imagery & visual direction'],['Brand applications: website, social & point of sale'],['Staff apparel: t-shirt, hoodie & cap'],['Brand guidelines & asset files']],
       spec:[['Directions explored','2 moodboard routes · 2 identity alternatives'],['Revision rounds','3 rounds, one after each feedback session'],['Final file formats','AI, SVG, PDF and PNG; guidelines as PDF'],
             ['Applications','Website, social and POS brand applications; 3 staff apparel items'],['Not included','Photography, copywriting, website build and printing']]},
-    { id:'packaging', name:'Packaging Design', short:'Packaging', price:2600, weeks:5, requires:[], after:{ id:'identity', week:5 },
+    { id:'packaging', name:'Packaging Design', short:'Packaging', price:3000, weeks:5, requires:[], after:{ id:'identity', week:5 },
       summary:'Print-ready packaging for three products and the shipping carton.',
       need:'Packaging that matches the new brand and is ready for production.',
       outcome:'Print-ready artwork your manufacturers can use straight away.',
@@ -1830,8 +1835,8 @@ const PROPOSAL = {
       spec:[['Templates','Your 3 existing print template files (dielines)'],['Revision rounds','2 rounds per design stage'],['Mandatory information','Health warnings and legal text supplied by Pocky; we design around the required areas'],
             ['Final file formats','Print-ready PDF with bleed and outlined type, plus source AI files'],['Not included','New dielines, structural design, printing and production costs']]}],
 
-  bundle:{ ids:['identity','packaging'], credit:800,
-    note:'When both services are selected, a €800 package credit applies to the total project cost.',
+  bundle:{ ids:['identity','packaging'], credit:2000,
+    note:'When both services are selected, a €2,000 package credit applies to the total project cost.',
     sequence:'Packaging starts at the end of week 5, once the identity is approved, so print-ready files arrive in week 10, not week 11.'},
 
   /* process modules: weeks are positions inside each service (0-based); `after` shifts them on the shared timeline */
