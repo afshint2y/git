@@ -1618,6 +1618,14 @@ body.on-ink .hb-menu a.on{color:#12110D!important}
 .t-perf{height:12px!important;background:radial-gradient(circle at 50% 100%,#FDFDFC 5.5px,transparent 6px) 13px 0/26px 12px repeat-x,#F7F7F7!important}
 .t-stub{background:radial-gradient(circle at 50% 0,#FDFDFC 5.5px,transparent 6px) 13px 0/26px 12px repeat-x,var(--metal)!important;color:#111!important;padding-top:calc(clamp(18px,2vw,28px) + 12px)!important}
 .t-stub .k,.t-stub>span:first-child{color:#3a3a38!important}
+/* the stub tears by hand: spring physics in JS drive --tear; no fixed hover pose */
+.t-stub,.total:hover .t-stub{transform:var(--tear,none)!important;animation:none!important;transition:none!important;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;will-change:transform}
+.t-stub.drag{cursor:grabbing}
+.total .t-main,.total:hover .t-main{transform:var(--tear-main,none)!important;transition:none!important}
+.t-stub{position:relative}
+#investment .more .spec dt,#investment .more .spec dd{border-top:0!important;padding-top:0!important}
+.t-hint{position:absolute;left:clamp(18px,2vw,28px);top:24px;font-size:12px;font-weight:500;text-transform:uppercase;color:#5E5E5A;opacity:0;transition:opacity .3s;pointer-events:none}
+.total:hover .t-hint{opacity:1}
 .t-stub s,.t-stub del{color:#5E5E5A!important}
 .pkg[aria-pressed="true"] .check{background:var(--ink)!important;color:#fff!important;border-color:var(--ink)!important}
 .case .c-out{font-size:var(--t-small);color:var(--text-2);max-width:40ch}
@@ -2496,6 +2504,31 @@ if(FINE&&!RM){
   tt.addEventListener('pointerleave',()=>{tt.classList.remove('live');tt.style.setProperty('--rx','0deg');tt.style.setProperty('--ry','0deg')});
   const sc=$('.startcard');$('#next').addEventListener('pointermove',e=>{const r=sc.getBoundingClientRect();sc.style.setProperty('--sx',clamp((e.clientX-r.left)/r.width*100,-20,120)+'%');sc.style.setProperty('--sy',clamp((e.clientY-r.top)/r.height*100,-20,120)+'%')});
 }
+/* total ticket: hover peels the stub at its free corner, a drag tears it along the perforation,
+   past the threshold it snaps off and hangs, otherwise it springs back; click a torn stub to reattach it */
+{ const tt=$('#totTicket'), st=tt&&$('.t-stub',tt), mn=tt&&$('.t-main',tt);
+  if(st){ const hint=document.createElement('span'); hint.className='t-hint'; hint.setAttribute('aria-hidden','true'); hint.textContent='Pull to tear'; st.prepend(hint);
+    const s={a:0,va:0,y:0,vy:0,ta:0,ty:0}; let raf=0, drag=null, torn=false, hover=false, lastHole=0;
+    const put=()=>{ const j=drag?Math.sin(performance.now()/38)*.12*Math.min(1,s.a/4):0;
+      st.style.setProperty('--tear',`translateY(${s.y.toFixed(2)}px) rotate(${(-s.a-j).toFixed(3)}deg)`);
+      mn.style.setProperty('--tear-main',`translateY(${(-Math.min(s.a,10)*.25).toFixed(2)}px)`); };
+    const tick=()=>{ if(!drag){ s.va+=(s.ta-s.a)*.09; s.va*=.82; s.a+=s.va; s.vy+=(s.ty-s.y)*.09; s.vy*=.82; s.y+=s.vy; }
+      put(); const busy=drag||Math.abs(s.va)>.005||Math.abs(s.ta-s.a)>.01||Math.abs(s.vy)>.01||Math.abs(s.ty-s.y)>.02;
+      raf=busy?requestAnimationFrame(tick):0; };
+    const kick=()=>{ if(RM){s.a=s.ta;s.y=s.ty;put();return} if(!raf)raf=requestAnimationFrame(tick) };
+    const rest=()=>{ s.ta=torn?9:(hover?2.2:0); s.ty=torn?26:(hover?2:0); hint.textContent=torn?'Click to put back':'Pull to tear'; kick(); };
+    tt.addEventListener('pointerenter',()=>{hover=true;if(!drag)rest()}); tt.addEventListener('pointerleave',()=>{hover=false;if(!drag)rest()});
+    st.addEventListener('pointerdown',e=>{ if(torn)return; e.preventDefault(); moved=false; st.setPointerCapture(e.pointerId); st.classList.add('drag');
+      drag={x:e.clientX,y:e.clientY,a:s.a}; lastHole=0; kick(); });
+    st.addEventListener('pointermove',e=>{ if(!drag)return; const dx=e.clientX-drag.x, dy=Math.max(0,e.clientY-drag.y);
+      const a=Math.min(14,drag.a+dy*.11-dx*.015), y=Math.min(30,dy*.22);
+      s.va=a-s.a; s.vy=y-s.y; s.a=a; s.y=y;
+      const hole=Math.floor(a/1.6); if(hole>lastHole&&navigator.vibrate){try{navigator.vibrate(4)}catch{}} lastHole=Math.max(lastHole,hole); });
+    let moved=false;
+    const end=()=>{ if(!drag)return; st.classList.remove('drag'); moved=s.a-drag.a>.5; drag=null; torn=s.a>8.5; if(torn)s.va+=1.2; rest(); setTimeout(()=>moved=false,0); };
+    st.addEventListener('pointerup',end); st.addEventListener('pointercancel',end);
+    st.addEventListener('click',()=>{ if(torn&&!drag&&!moved){ torn=false; s.va-=.8; rest(); } });
+    rest(); } }
 /* challenge headline: letters gain weight near the cursor */
 const wt=$('#weightTitle');
 if(wt&&FINE&&!RM){const words=wt.textContent.split(' ');wt.textContent='';
