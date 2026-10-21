@@ -1624,6 +1624,20 @@ body.on-ink .hb-menu a.on{color:#12110D!important}
 .total .t-main,.total:hover .t-main{transform:var(--tear-main,none)!important;transition:none!important}
 .t-stub{position:relative}
 .timeline-hint{display:none;font-size:12px;color:var(--mute);margin-top:-12px}
+/* investment fact in Before you decide: no box, like the others */
+.facts .accent{background:none!important;padding-left:0!important;padding-right:0!important}
+.tap-hint{display:none;font-size:12px;color:var(--mute);text-align:center;margin-top:-8px}
+/* touch screens have no hover: show the cues that hover would reveal, and drop sticky hover lifts */
+@media (hover:none){
+  .tap-hint{display:block}
+  .t-hint{opacity:1!important}
+  .board .hint span{display:none}
+  .board .hint::before{content:"Swipe the cards \2192"}
+  .ph:not(.on) .ph-top::after{content:"+";margin-left:auto;width:22px;height:22px;border-radius:50%;border:1px solid currentColor;display:grid;place-items:center;font-size:14px;line-height:1}
+  .ph-top{align-items:center}
+  .pkg:hover,.hnx-cta:hover,.case:hover .frame img,.hf-q:hover{transform:none!important}
+  .hnx-cta:hover i{transform:none}
+}
 /* ── phone layout fixes ── */
 @media (max-width:760px){
   .hb-mail,.hb-soc{display:none!important}
@@ -1646,8 +1660,11 @@ body.on-ink .hb-menu a.on{color:#12110D!important}
   .tk-cl{max-width:none!important;min-height:0!important;gap:28px!important}
   .tk-frame{display:none!important}
   .bt-top .amt,.bigticket .tk-skin .amt{font-size:clamp(48px,15vw,72px)!important}
-  .tk-r{position:relative!important;inset:auto!important;margin-top:10px}
-  .tk-r .tk-skin{min-height:0!important;padding:0!important}
+  .tk-r{position:relative!important;inset:auto!important;margin-top:0!important}
+  #bigticket .tk-l .tk-skin{border-radius:24px 24px 0 0!important;clip-path:none!important}
+  #bigticket .tk-r .tk-skin{min-height:0!important;padding:0!important;background:var(--metal)!important;border-radius:0 0 24px 24px!important;border-top:1px dashed rgba(0,0,0,.22);clip-path:none!important}
+  .tk-shade{display:none!important}
+  .tk-bskin{border-radius:24px!important}
   .tk-cr{position:relative!important;inset:auto!important;padding:24px!important;gap:10px!important}
   .tk-cr .k,.tk-cr .cv{width:auto!important}
   .stages .st-h{flex-wrap:wrap;gap:6px 12px}
@@ -1689,8 +1706,6 @@ body.on-ink .hb-menu a.on{color:#12110D!important}
 .hnx-foot a:hover{text-decoration:underline}
 .hnx-foot span{color:var(--text-2)}
 @media (max-width:860px){.hnx{grid-template-columns:1fr;grid-template-areas:"s" "r" "c" "f"}.hnx-ctas{grid-template-columns:1fr}}
-.facts .accent{background:var(--metal)!important;color:#111!important;box-shadow:none!important}
-.facts .accent .k{color:#3a3a38!important}
 .facts>div:not(.accent){background:none!important;padding-left:0;padding-right:0}
 .facts .v small{font-size:.62em!important}
 .more-h{padding:16px 0;font-size:var(--t-small)!important;line-height:1.4!important}
@@ -1941,7 +1956,7 @@ const PROPOSAL = {
 (()=>{
 const P=PROPOSAL, $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const GLYPHS=['<svg viewBox="0 0 120 120" class="g1"><g opacity=".4"><circle cx="40" cy="40" r="3"/><circle cx="60" cy="40" r="3"/><circle cx="80" cy="40" r="3"/><circle cx="40" cy="60" r="3"/><circle cx="60" cy="60" r="3"/><circle cx="80" cy="60" r="3"/><circle cx="40" cy="80" r="3"/><circle cx="60" cy="80" r="3"/><circle cx="80" cy="80" r="3"/></g><g class="lens"><circle cx="60" cy="60" r="16"/><path d="M71 71l12 12"/></g></svg>', '<svg viewBox="0 0 120 120" class="g2"><path d="M20 22h80a8 8 0 0 1 8 8v44a8 8 0 0 1-8 8H50l-18 16V82H20a8 8 0 0 1-8-8V30a8 8 0 0 1 8-8z"/><path class="ln" d="M26 40h60"/><path class="ln" d="M26 52h46"/><path class="ln" d="M26 64h28"/><rect class="cur lime" x="60" y="58" width="4" height="12" rx="1"/></svg>', '<svg viewBox="0 0 120 120" class="g3"><rect class="t" x="16" y="22" width="42" height="34" rx="4"/><rect class="t lime" x="64" y="18" width="38" height="48" rx="4"/><rect class="t" x="20" y="62" width="36" height="38" rx="4"/><circle class="t fill" cx="76" cy="84" r="7"/><circle class="t" cx="96" cy="84" r="7"/></svg>', '<svg viewBox="0 0 120 120" class="g4"><path d="M14 60h92M60 14v92M27 27l66 66M93 27l-66 66" opacity=".25"/><circle cx="60" cy="60" r="38"/><rect x="33" y="33" width="54" height="54" rx="2"/><circle class="lime" cx="60" cy="60" r="14"/></svg>', '<svg viewBox="0 0 120 120" class="g5"><rect class="sheet" x="38" y="26" width="44" height="64" rx="6"/><rect class="sheet" x="38" y="26" width="44" height="64" rx="6"/><rect class="sheet lime" x="38" y="26" width="44" height="64" rx="6"/></svg>', '<svg viewBox="0 0 120 120" class="g6"><rect x="30" y="24" width="60" height="74" rx="6"/><g class="pg"><rect x="60" y="24" width="30" height="74" rx="4" class="lime"/></g><path d="M40 40h14M40 50h14M40 60h10"/></svg>', '<svg viewBox="0 0 120 120" class="g7"><rect x="46" y="14" width="28" height="18" rx="4" class="lime"/><path class="ray" d="M60 32v14"/><path class="ray" d="M24 46h72M24 46v14M60 46v14M96 46v14"/><rect x="10" y="60" width="28" height="18" rx="4"/><rect x="46" y="60" width="28" height="18" rx="4"/><rect x="82" y="60" width="28" height="18" rx="4"/><path class="ray" d="M24 78v12M60 78v12"/><rect x="14" y="90" width="20" height="12" rx="3"/><rect x="50" y="90" width="20" height="12" rx="3"/></svg>', '<svg viewBox="0 0 120 120" class="g8"><rect x="12" y="18" width="96" height="82" rx="8"/><path d="M12 32h96"/><circle cx="21" cy="25" r="2" class="fill"/><circle cx="28" cy="25" r="2" class="fill"/><circle cx="35" cy="25" r="2" class="fill"/><rect class="blk lime" x="22" y="40" width="76" height="20" rx="3"/><rect class="blk" x="22" y="66" width="34" height="26" rx="3"/><rect class="blk" x="62" y="66" width="36" height="10" rx="3"/><rect class="blk" x="62" y="82" width="24" height="10" rx="3"/></svg>', '<svg viewBox="0 0 120 120" class="g9"><path class="br" d="M40 34L18 60l22 26"/><path class="br" d="M80 34l22 26-22 26"/><path class="sl" d="M67 28L53 92"/><circle class="okc lime" cx="94" cy="94" r="13"/><path class="ck" d="M87 94l5 5 9-9"/></svg>'];
-const RM=matchMedia('(prefers-reduced-motion: reduce)').matches, FINE=matchMedia('(pointer: fine)').matches;
+const RM=matchMedia('(prefers-reduced-motion: reduce)').matches, FINE=matchMedia('(pointer: fine)').matches, TOUCH=matchMedia('(hover: none)').matches;
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v)), pad=n=>String(n).padStart(2,'0');
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const t=v=>v===TBC||v===undefined?'<span class="tbc">To be confirmed</span>':Array.isArray(v)?v.map(t).join(' '):esc(v);
@@ -2082,7 +2097,8 @@ M.price=()=>sec('price','light price','Invest','The investment',
         <dl class="tb-dl"><dt>Paid In</dt><dd>${P.payment.stages} Stages · 40 · 30 · 30</dd><dt>Valid For</dt><dd>10 Days</dd><dt>Prepared By</dt><dd>Heli Studio</dd></dl>
         <p class="tb-ct">${esc(P.contact.email)}<br>heli.studio</p>
       </div></div></div>
-  </div>`);
+  </div>
+  <p class="tap-hint">Tap the ticket to flip it</p>`);
 
 M.investment=()=>sec('investment','light','Invest','Investment',
   head('Investment','Choose the scope. The total, timeline and scope update with it.','How much will it cost')+`
@@ -2533,7 +2549,7 @@ if(FINE&&!RM){
       put(); const busy=drag||Math.abs(s.va)>.005||Math.abs(s.ta-s.a)>.01||Math.abs(s.vy)>.01||Math.abs(s.ty-s.y)>.02;
       raf=busy?requestAnimationFrame(tick):0; };
     const kick=()=>{ if(RM){s.a=s.ta;s.y=s.ty;put();return} if(!raf)raf=requestAnimationFrame(tick) };
-    const rest=()=>{ s.ta=torn?9:(hover?2.2:0); s.ty=torn?26:(hover?2:0); hint.textContent=torn?'Click to put back':'Pull to tear'; kick(); };
+    const rest=()=>{ s.ta=torn?9:(hover?2.2:0); s.ty=torn?26:(hover?2:0); hint.textContent=torn?(TOUCH?'Tap to put back':'Click to put back'):(TOUCH?'Pull down or tap to tear':'Pull to tear'); kick(); };
     tt.addEventListener('pointerenter',()=>{hover=true;if(!drag)rest()}); tt.addEventListener('pointerleave',()=>{hover=false;if(!drag)rest()});
     st.addEventListener('pointerdown',e=>{ if(torn)return; e.preventDefault(); moved=false; st.setPointerCapture(e.pointerId); st.classList.add('drag');
       drag={x:e.clientX,y:e.clientY,a:s.a}; lastHole=0; kick(); });
@@ -2544,7 +2560,7 @@ if(FINE&&!RM){
     let moved=false;
     const end=()=>{ if(!drag)return; st.classList.remove('drag'); moved=s.a-drag.a>.5; drag=null; torn=s.a>8.5; if(torn)s.va+=1.2; rest(); setTimeout(()=>moved=false,0); };
     st.addEventListener('pointerup',end); st.addEventListener('pointercancel',end);
-    st.addEventListener('click',()=>{ if(torn&&!drag&&!moved){ torn=false; s.va-=.8; rest(); } });
+    st.addEventListener('click',()=>{ if(drag||moved)return; if(torn){ torn=false; s.va-=.8; } else if(TOUCH){ torn=true; s.va+=1.2; } rest(); });
     rest(); } }
 /* challenge headline: letters gain weight near the cursor */
 const wt=$('#weightTitle');
