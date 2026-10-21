@@ -1614,10 +1614,12 @@ body.on-ink .hb-menu a.on{color:#12110D!important}
 .cases.c-3 .case .open{white-space:nowrap;flex:none}
 .scope-grid li:last-child{border-bottom:0}
 /* total ticket stub in black instead of yellow */
-.t-perf{background:radial-gradient(circle,#FDFDFC 5.5px,transparent 6px) 13px 50%/26px 24px repeat-x,linear-gradient(180deg,#F7F7F7 50%,transparent 50%),var(--ink)!important}
-.t-stub{background:var(--ink)!important;color:#fff!important}
-.t-stub .k,.t-stub>span:first-child{color:#A9A9A3!important}
-.t-stub s,.t-stub del{color:#77776F!important}
+/* the tear runs through the middle of the holes: upper halves stay on the card, lower halves leave with the stub */
+.t-perf{height:12px!important;background:radial-gradient(circle at 50% 100%,#FDFDFC 5.5px,transparent 6px) 13px 0/26px 12px repeat-x,#F7F7F7!important}
+.t-stub{background:radial-gradient(circle at 50% 0,#FDFDFC 5.5px,transparent 6px) 13px 0/26px 12px repeat-x,var(--metal)!important;color:#111!important;padding-top:calc(clamp(18px,2vw,28px) + 12px)!important}
+.t-stub .k,.t-stub>span:first-child{color:#3a3a38!important}
+.t-stub s,.t-stub del{color:#5E5E5A!important}
+.pkg[aria-pressed="true"] .check{background:var(--ink)!important;color:#fff!important;border-color:var(--ink)!important}
 .case .c-out{font-size:var(--t-small);color:var(--text-2);max-width:40ch}
 .drawer .panel .frame+.frame{margin-top:-12px}
 .team-lead{font-size:var(--t-h2);font-weight:450;letter-spacing:-.035em;line-height:1.2;max-width:none;text-wrap:balance}
