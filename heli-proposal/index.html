@@ -1819,7 +1819,7 @@ const PROPOSAL = {
       deliverables:[['2 logo alternatives'],['Colour palette & typography system'],['Graphic language & patterns'],['Imagery & visual direction'],['Brand applications: website, social & point of sale'],['Staff apparel: t-shirt, hoodie & cap'],['Brand guidelines & asset files']],
       spec:[['Directions explored','2 moodboard routes · 2 identity alternatives'],['Revision rounds','3 rounds, one after each feedback session'],['Final file formats','AI, SVG, PDF and PNG; guidelines as PDF'],
             ['Applications','Website, social and POS brand applications; 3 staff apparel items'],['Not included','Photography, copywriting, website build and printing']]},
-    { id:'packaging', name:'Packaging Design', short:'Packaging', price:2600, weeks:4, requires:[], after:{ id:'identity', week:4 },
+    { id:'packaging', name:'Packaging Design', short:'Packaging', price:2600, weeks:6, requires:[], after:{ id:'identity', week:4 },
       summary:'Print-ready packaging for three products and the shipping carton.',
       need:'Packaging that matches the new brand and is ready for production.',
       outcome:'Print-ready artwork your manufacturers can use straight away.',
@@ -1832,7 +1832,7 @@ const PROPOSAL = {
 
   bundle:{ ids:['identity','packaging'], credit:800,
     note:'When both services are selected, a €800 package credit applies to the total project cost.',
-    sequence:'Packaging starts once the identity is approved in week 4, so print-ready files arrive in week 8, not week 10.'},
+    sequence:'Packaging starts in week 5, alongside the identity approval, so print-ready files arrive in week 10, not week 12.'},
 
   /* process modules: weeks are positions inside each service (0-based); `after` shifts them on the shared timeline */
   process:{
@@ -1841,29 +1841,29 @@ const PROPOSAL = {
         deliverables:'Category audit & creative brief', you:'Kick-off session, current packaging, templates and range plans', gate:null},
       { glyph:2, name:'Creative Direction', start:1, end:2, purpose:'Two visual routes for colour, type, imagery and graphic language, each shown on social and on a pack.',
         deliverables:'2 direction routes', you:'Choose one route', gate:'Direction approved'},
-      { glyph:3, name:'Identity System', start:2, end:4, purpose:'Proposing 2 visual identity alternatives (logo, colour, typography, imagery).',
+      { glyph:3, name:'Identity System', start:2, end:5, purpose:'Proposing 2 visual identity alternatives (logo, colour, typography, imagery).',
         deliverables:'2 logo alternatives & full identity system', you:'Two feedback sessions', gate:'Identity approved'},
-      { glyph:7, name:'Applications & Guidelines', start:4, end:6, purpose:'Show the system at work on web, social, point of sale and staff apparel, then document it.',
+      { glyph:7, name:'Applications & Guidelines', start:5, end:6, purpose:'Show the system at work on web, social, point of sale and staff apparel, then document it.',
         deliverables:'Brand applications, apparel, guidelines & asset files', you:'Final review and sign-off', gate:null}],
     packaging:[
-      { glyph:4, name:'Pack Concept', start:0, end:1, purpose:'Apply the approved identity to one lead product and set the hierarchy around the mandatory warning areas.',
+      { glyph:4, name:'Pack Concept', start:0, end:2, purpose:'Apply the approved identity to one lead product and set the hierarchy around the mandatory warning areas.',
         deliverables:'Packaging concept', you:'Feedback session', gate:'Concept approved'},
-      { glyph:5, name:'Range & Carton', start:1, end:3, purpose:'Roll the concept out across all three products on your templates, plus the shipping carton.',
+      { glyph:5, name:'Range & Carton', start:2, end:5, purpose:'Roll the concept out across all three products on your templates, plus the shipping carton.',
         deliverables:'3 packs & shipping carton', you:'Product information and legal text', gate:null},
-      { glyph:8, name:'Prepress & Handoff', start:3, end:4, purpose:'Check the artwork with your manufacturer, fix what production needs and hand over the files.',
+      { glyph:8, name:'Prepress & Handoff', start:5, end:6, purpose:'Check the artwork with your manufacturer, fix what production needs and hand over the files.',
         deliverables:'Print-ready files', you:'Manufacturer contact and sign-off', gate:null}]},
   /* timeline view: one block per service, bars [label, startWeek, endWeek, row], sessions [label, week position] */
   timeline:{
     identity:{ weeks:6,
-      bars:[['Discovery',0,1,0],['Direction',1,2,0],['Identity System',2,4,0],['Applications & Guidelines',4,6,0]],
-      sessions:[['Kick-off',0],['Feedback',2],['Feedback',4],['Final delivery',6]]},
-    packaging:{ weeks:4,
-      bars:[['Concept',0,1,0],['Range & Carton',1,3,0],['Prepress',3,4,0]],
-      sessions:[['Feedback',1],['Feedback',3],['Print-ready files',4]]}},
+      bars:[['Discovery',0,1,0],['Direction',1,2,0],['Identity System',2,5,0],['Applications & Guidelines',5,6,0]],
+      sessions:[['Kick-off',0],['Feedback',2],['Feedback',5],['Final delivery',6]]},
+    packaging:{ weeks:6,
+      bars:[['Concept',0,2,0],['Range & Carton',2,5,0],['Prepress',5,6,0]],
+      sessions:[['Feedback',2],['Feedback',5],['Print-ready files',6]]}},
 
   collaboration:{
     studio:['Direction & planning','Identity & packaging design','Weekly feedback sessions','Print-ready files & handoff'],
-    client:['One decision-maker',['Packaging & template files','Before kickoff'],['Product info & range plans','Week 1'],['Feedback','Within 2 days'],['Health warnings & legal text','Before week 5'],['Manufacturer contact','Before week 7']],
+    client:['One decision-maker',['Packaging & template files','Before kickoff'],['Product info & range plans','Week 1'],['Feedback','Within 2 days'],['Health warnings & legal text','Before week 5'],['Manufacturer contact','Before week 9']],
     cadence:[['Feedback','Once a week'],['Channel','Slack & video calls'],['Response time','Within 1 working day'],['Your contact','Project manager']]},
 
   team:{
