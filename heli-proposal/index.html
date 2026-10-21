@@ -1615,7 +1615,7 @@ body.on-ink .hb-menu a.on{color:#12110D!important}
 .scope-grid li:last-child{border-bottom:0}
 .case .c-out{font-size:var(--t-small);color:var(--text-2);max-width:40ch}
 .drawer .panel .frame+.frame{margin-top:-12px}
-.team-lead{font-size:var(--t-h2);font-weight:450;letter-spacing:-.035em;line-height:1.2;max-width:34ch;text-wrap:balance}
+.team-lead{font-size:var(--t-h2);font-weight:450;letter-spacing:-.035em;line-height:1.2;max-width:none;text-wrap:balance}
 .team-lead b{font-weight:450}
 .t-dots{display:inline-flex;vertical-align:middle;margin:0 .1em}
 .t-dots i{width:1em;height:1em;border-radius:50%;background:var(--card);border:2px solid var(--paper);margin-left:-.26em;display:grid;place-items:center;font-style:normal}
@@ -1867,7 +1867,7 @@ const PROPOSAL = {
     cadence:[['Feedback','Once a week'],['Channel','Slack & video calls'],['Response time','Within 1 working day'],['Your contact','Project manager']]},
 
   team:{
-    roles:[['AD','Art Director','Throughout','Owns the creative direction across identity and packaging, and signs off every stage.'],['PM','Project Manager','Throughout','Your point of contact for timeline, feedback and delivery.'],['BD','Brand Designer','Identity phase','Builds the logo, colour, type, patterns and guidelines.'],['PD','Packaging Designer','Packaging phase','Designs the three packs and the carton, and prepares print-ready files.'],['CW','Copywriter','Identity & packaging','Writes the brand voice, key messages and the copy on packs and brand applications.'],['CM','Content Manager','Throughout','Plans how the new brand shows up on Instagram and TikTok, and keeps content consistent with the system.']]},
+    roles:[['AD','Art Director','Throughout','Owns the creative direction across identity and packaging, and signs off every stage.'],['PM','Project Manager','Throughout','Your point of contact for timeline, feedback and delivery.'],['VD','Visual Identity Designer','Identity & packaging','Builds the logo, colour, type, patterns and guidelines, then designs the three packs and the carton and prepares print-ready files.'],['CW','Copywriter','Identity & packaging','Writes the brand voice, key messages and the copy on packs and brand applications.'],['CM','Content Manager','Throughout','Plans how the new brand shows up on Instagram and TikTok, and keeps content consistent with the system.']]},
   payment:{ split:[['To start',.4],['Identity approved',.3],['Final delivery',.3]], stages:3, extra:'Third-party costs such as fonts, stock imagery, printing and production', validity:'20 November 2026, 30 days from the date of this proposal' },
 
   terms:[
@@ -1892,7 +1892,7 @@ const PROPOSAL = {
       { name:'Heli Technology', tags:'Brand Identity, Social System', outcome:'One recognisable voice across products and social channels.', imgs:['assets/work/helitechnology-2.avif','assets/work/helitechnology-1.avif','assets/work/helitechnology-3.avif'] },
       { name:'Money Mend', tags:'Brand Identity, Visual System', outcome:'A distinctive identity in a category full of look-alikes.', imgs:['assets/work/moneymend-2.avif','assets/work/moneymend-1.avif','assets/work/moneymend-3.avif'] },
       { name:'Dizno', tags:'Brand Identity, Guidelines', outcome:'A flexible brand system built to grow with new products.', imgs:['assets/work/dizno-3.avif','assets/work/dizno-1.avif','assets/work/dizno-2.avif'] }],
-    creds:[['6<small>Art direction · Brand · Packaging · Copy · Content · Project management</small>','Specialists on your team'],['@weeks','From first sketch to print-ready files'],['2<small>2 moodboard routes · 2 identity alternatives</small>','Identity routes to choose from'],['@sessions','Sessions with you']] },
+    creds:[['5<small>Art direction · Visual identity · Copy · Content · Project management</small>','Specialists on your team'],['@weeks','From first sketch to print-ready files'],['2<small>2 moodboard routes · 2 identity alternatives</small>','Identity routes to choose from'],['@sessions','Sessions with you']] },
 
   capabilities:[
     ['Brand Identity',['Verbal Identity','Logo Design','Motion Graphic','2D & 3D Illustration','AI Avatar Design','Brand Style Guide']],
@@ -2007,10 +2007,10 @@ M.timeline=()=>`<section class="tl light pin" id="timeline" data-stage="Explain"
   ${foot('Explain','Timeline')}
 </div></section>`;
 
-M.team=()=>sec('team','light','Explain','Your team',
-  head('Your team',`The roles working on ${esc(P.client.name)}, and what each of them owns.`,'Who is involved')+`
+M.team=()=>sec('team','light','Explain','Our team',
+  head('Our team',`The roles working on ${esc(P.client.name)}, and what each of them owns.`,'Who is involved')+`
   <p class="team-lead">A focused team of <b>${P.team.roles.length} specialists</b> <span class="t-dots" aria-hidden="true">${P.team.roles.map(([a])=>`<i><b>${esc(a)}</b></i>`).join('')}</span> takes ${esc(P.client.name)} from first sketch to print-ready files in <b data-bind="weeksN"></b>, with <b>2 identity routes</b> <span class="t-obj" aria-hidden="true"><svg viewBox="0 0 48 43"><use href="#lg"/></svg></span> to choose from and <b data-bind="sessionsN"></b> with you.</p>
-  <ol class="team grow">${P.team.roles.map(([a,r,ph,d],i)=>`<li><span class="no num">${pad(i+1)}</span><div><h3>${esc(r)}</h3><p class="tph">${esc(ph)}</p></div><p class="td">${esc(d)}</p></li>`).join('')}</ol>`);
+  <ol class="team grow">${P.team.roles.map(([a,r,ph,d],i)=>`<li><span class="no num">${pad(i+1)}</span><div><h3>${esc(r)}</h3></div><p class="td">${esc(d)}</p></li>`).join('')}</ol>`);
 
 M.collab=()=>sec('collab','light','Explain','Working together',
   head('Working together','Who does what, so nothing falls between us.','How we collaborate')+`
