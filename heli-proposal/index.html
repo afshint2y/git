@@ -1623,6 +1623,7 @@ body.on-ink .hb-menu a.on{color:#12110D!important}
 .t-stub.drag{cursor:grabbing}
 .total .t-main,.total:hover .t-main{transform:var(--tear-main,none)!important;transition:none!important}
 .t-stub{position:relative}
+.more-h{padding:16px 0;font-size:var(--t-small)!important;line-height:1.4!important}
 /* a simple, friendly smiley: gentle float and blink, no spin */
 .smiley.cute svg{animation:smFloat 4.5s ease-in-out infinite!important}
 @media (prefers-reduced-motion:reduce){.smiley.cute svg{animation:none!important}}
@@ -2082,7 +2083,7 @@ M.investment=()=>sec('investment','light','Invest','Investment',
     </aside>
   </div>
   <div>
-    <details class="more" open><summary>Payment milestones<span class="pm" aria-hidden="true">+</span></summary><div class="inner"><dl class="spec"><dt>Schedule</dt><dd><span data-bind="milestones"></span>. Invoices are due within 7 days.</dd></dl></div></details>
+    <div class="more"><h3 class="more-h">Payment milestones</h3><div class="inner"><dl class="spec"><dt>Schedule</dt><dd><span data-bind="milestones"></span>. Invoices are due within 7 days.</dd></dl></div></div>
   </div>`);
 
 M.terms=()=>sec('terms','light','Invest','Terms',
