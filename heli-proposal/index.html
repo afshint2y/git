@@ -1623,6 +1623,9 @@ body.on-ink .hb-menu a.on{color:#12110D!important}
 .t-stub.drag{cursor:grabbing}
 .total .t-main,.total:hover .t-main{transform:var(--tear-main,none)!important;transition:none!important}
 .t-stub{position:relative}
+/* a simple, friendly smiley: gentle float and blink, no spin */
+.smiley.cute svg{animation:smFloat 4.5s ease-in-out infinite!important}
+@media (prefers-reduced-motion:reduce){.smiley.cute svg{animation:none!important}}
 #investment .more .spec dt,#investment .more .spec dd{border-top:0!important;padding-top:0!important}
 .t-hint{position:absolute;left:clamp(18px,2vw,28px);top:24px;font-size:12px;font-weight:500;text-transform:uppercase;color:#5E5E5A;opacity:0;transition:opacity .3s;pointer-events:none}
 .total:hover .t-hint{opacity:1}
@@ -1883,7 +1886,7 @@ const PROPOSAL = {
 
   team:{
     roles:[['AD','Art Director','Throughout','Owns the creative direction across identity and packaging, and signs off every stage.'],['AM','Account Manager','Throughout','Your point of contact for timeline, feedback and delivery.'],['VD','Visual Identity Designer','Identity & packaging','Builds the logo, colour, type and guidelines, then designs the three packs and the carton and prepares print-ready files.'],['CW','Copywriter','Identity & packaging','Writes the brand voice, key messages and the copy on packs and brand applications.'],['CM','Content Manager','Throughout','Oversees the copywriting process.']]},
-  payment:{ split:[['To start',.4],['Identity approved',.3],['Final delivery',.3]], stages:3, extra:'Third-party costs such as fonts, stock imagery, printing and production', validity:'20 November 2026, 30 days from the date of this proposal' },
+  payment:{ split:[['To start',.4],['Identity approved',.3],['Final delivery',.3]], stages:3, extra:'Third-party costs such as fonts, stock imagery, printing and production', validity:'31 October 2026, 10 days from the date of this proposal' },
 
   terms:[
     ['Payment schedule','40% to start, 30% once the identity is approved, 30% on final delivery. Invoices are due within 7 days.'],
@@ -1893,8 +1896,8 @@ const PROPOSAL = {
     ['Timeline assumptions','Durations are estimates until the start date is confirmed at kickoff.'],
     ['Compliance','Pocky is responsible for the regulatory content of its packaging, including health warnings and product claims.'],
     ['Intellectual property','Full rights to the final approved work transfer to Pocky Group AB once the final payment is received.'],
-    ['Third-party costs','Fonts, stock imagery, printing and production are paid by Pocky at cost.'],
-    ['Proposal validity','30 days from the date of this proposal.']],
+    ['Third-party costs','Printing and production are paid by Pocky at cost.'],
+    ['Proposal validity','10 days from the date of this proposal.']],
 
   start:{ earliest:'3 November 2026', status:'Fully available' },
 
@@ -2060,7 +2063,7 @@ M.price=()=>sec('price','light price','Invest','The investment',
       <span class="tb-mark">${esc(P.client.name)}</span>
       <div class="tb-in">
         <div class="tb-who"><p class="tb-br">Heli Studio<b>×</b>${esc(P.client.name)}</p><p class="tb-ro">${esc(P.project.name)} · ${esc(P.project.date)} · ${esc(P.project.version)}</p></div>
-        <dl class="tb-dl"><dt>Paid In</dt><dd>${P.payment.stages} Stages · 40 · 30 · 30</dd><dt>Valid For</dt><dd>30 Days</dd><dt>Prepared By</dt><dd>Heli Studio</dd></dl>
+        <dl class="tb-dl"><dt>Paid In</dt><dd>${P.payment.stages} Stages · 40 · 30 · 30</dd><dt>Valid For</dt><dd>10 Days</dd><dt>Prepared By</dt><dd>Heli Studio</dd></dl>
         <p class="tb-ct">${esc(P.contact.email)}<br>heli.studio</p>
       </div></div></div>
   </div>`);
@@ -2089,11 +2092,11 @@ M.terms=()=>sec('terms','light','Invest','Terms',
   <div class="terms-wrap grow">
     <div class="terms-grid">${P.terms.map(([h,v],i)=>`<div class="term"><p class="tn num">${pad(i+1)}</p><h3>${esc(h)}</h3><p class="tv">${t(v)}</p></div>`).join('')}</div>
   </div>
-  <p class="nac">This is a proposal, not a contract. The agreement follows once you confirm. <span class="smiley doodle" id="smiley" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" stroke="#131313" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M62 10c22 1 46 18 47 47 1 27-19 52-48 53-29 1-50-21-51-49C9 33 33 9 59 11" stroke-width="7"/>
-      <path d="M58 14c-3-2-7-3-11-1" stroke-width="3"/>
-      <g class="sm-eyes"><path class="sm-eye" d="M41 45c3-3 9-2 9 4s-8 7-10 2c-1-3 0-5 1-6z" fill="#131313" stroke-width="2"/><path class="sm-eye" d="M73 44c4 0 9 4 8 9-1 4-6 4-8 0-1-3-2-6 0-9z" fill="#131313" stroke-width="2"/></g>
-      <path class="sm-mouth" d="M35 69c6 5 11 9 15 14 7 6 20 6 29-2 5-5 8-9 9-12" stroke-width="7"/></svg></span></p>`);
+  <p class="nac">This is a proposal, not a contract. The agreement follows once you confirm. <span class="smiley doodle cute" id="smiley" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="60" cy="60" r="54" fill="#FDF451"/>
+      <circle cx="32" cy="70" r="8" fill="#F7B3B0" opacity=".7"/><circle cx="88" cy="70" r="8" fill="#F7B3B0" opacity=".7"/>
+      <g class="sm-eyes"><ellipse class="sm-eye" cx="44" cy="54" rx="5.5" ry="7" fill="#131313"/><ellipse class="sm-eye" cx="76" cy="54" rx="5.5" ry="7" fill="#131313"/></g>
+      <path class="sm-mouth" d="M50 74c5 5 15 5 20 0" stroke="#131313" stroke-width="5"/></svg></span></p>`);
 
 M.next=()=>sec('next','light','Start','Next steps',`
   <div class="nx grow">
