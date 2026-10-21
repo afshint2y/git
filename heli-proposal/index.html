@@ -1990,7 +1990,7 @@ M.work=()=>sec('work','light','Prove','Relevant work',
 `);
 
 M.scope=()=>sec('scope','light','Explain','Scope & deliverables',
-  head('Scope &amp; deliverables','What we do, and what you receive. Open the specifics for the fine print.','What will we receive')+`
+  head('Scope &amp; deliverables','Switch between tabs to see details.','What will we receive')+`
   <div class="scope-head"><div class="tabs" role="tablist" aria-label="Service" id="scopeTabs">${P.services.map(s=>`<button role="tab" data-svc="${s.id}" aria-selected="false">${esc(s.tab||s.name)}</button>`).join('')}</div>
     <p class="k" id="scopeNote"></p></div>
   <div id="scopePanel" class="grow"></div>`);
