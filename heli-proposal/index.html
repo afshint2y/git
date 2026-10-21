@@ -1991,8 +1991,6 @@ M.work=()=>sec('work','light','Prove','Relevant work',
   head('Relevant work','Experienced in various visual identities with cohesive and flexible systems, and excited to work on a packaging project like yours!','Why trust us')+`
   <div class="cases c-${P.work.cases.length}">${P.work.cases.map((c,i)=>`<button class="case" data-case="${i}"><span class="frame"><img src="${c.imgs[0]}" alt="${esc(c.name)}, ${esc(c.tags)}" loading="lazy"></span>
     <span class="cap"><span><b>${esc(c.name)}</b>&nbsp;&nbsp;<span>${esc(c.tags)}</span></span><span class="open">Case details</span></span><span class="c-out">${esc(c.outcome)}</span></button>`).join('')}</div>
-  <div class="proj"><p class="proj-h">This project <span>${esc(P.client.name)} · ${esc(P.project.name)}</span></p>
-  <div class="creds">${P.work.creds.map(([n,l])=>`<div class="rule"><p class="n num"${n[0]==='@'?` data-bind="${n.slice(1)}"`:''}>${n===TBC?t(TBC):n[0]==='@'?'':n}</p><p>${esc(l)}</p></div>`).join('')}</div></div>
 `);
 
 M.scope=()=>sec('scope','light','Explain','Scope & deliverables',
