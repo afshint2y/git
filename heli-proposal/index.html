@@ -1889,7 +1889,6 @@ const PROPOSAL = {
   payment:{ split:[['To start',.4],['Identity approved',.3],['Final delivery',.3]], stages:3, extra:'Third-party costs such as fonts, stock imagery, printing and production', validity:'31 October 2026, 10 days from the date of this proposal' },
 
   terms:[
-    ['Payment schedule','40% to start, 30% once the identity is approved, 30% on final delivery. Invoices are due within 7 days.'],
     ['Revisions','The identity includes 3 revision rounds, packaging 2 rounds per design stage. Extra rounds are billed at the hourly rate.'],
     ['Scope','The work covers the services and deliverables in this proposal. Anything else is quoted separately and approved in writing first.'],
     ['Client dependencies','Timelines assume feedback, templates and product information arrive on schedule. Late input moves the timeline.'],
@@ -1897,7 +1896,8 @@ const PROPOSAL = {
     ['Compliance','Pocky is responsible for the regulatory content of its packaging, including health warnings and product claims.'],
     ['Intellectual property','Full rights to the final approved work transfer to Pocky Group AB once the final payment is received.'],
     ['Third-party costs','Printing and production are paid by Pocky at cost.'],
-    ['Proposal validity','10 days from the date of this proposal.']],
+    ['Proposal validity','10 days from the date of this proposal.'],
+    ['Sharing the work','We may share the finished work in our portfolio and on social media. If you have any concerns about sharing, let us know before the project starts.']],
 
   start:{ earliest:'3 November 2026', status:'Fully available' },
 
@@ -2082,9 +2082,7 @@ M.investment=()=>sec('investment','light','Invest','Investment',
     </aside>
   </div>
   <div>
-    <details class="more"><summary>Payment milestones<span class="pm" aria-hidden="true">+</span></summary><div class="inner"><dl class="spec"><dt>Schedule</dt><dd data-bind="milestones"></dd></dl></div></details>
-    <details class="more"><summary>Additional costs<span class="pm" aria-hidden="true">+</span></summary><div class="inner"><dl class="spec"><dt>Not included</dt><dd>${esc(P.payment.extra)}: quoted separately when needed</dd></dl></div></details>
-    <details class="more"><summary>Proposal validity<span class="pm" aria-hidden="true">+</span></summary><div class="inner"><dl class="spec"><dt>Valid until</dt><dd>${t(P.payment.validity)}</dd></dl></div></details>
+    <details class="more" open><summary>Payment milestones<span class="pm" aria-hidden="true">+</span></summary><div class="inner"><dl class="spec"><dt>Schedule</dt><dd><span data-bind="milestones"></span>. Invoices are due within 7 days.</dd></dl></div></details>
   </div>`);
 
 M.terms=()=>sec('terms','light','Invest','Terms',
