@@ -5,8 +5,8 @@ Static copy of the site from `heli.studio_1.zip`, repaired so it loads without e
 ## Run
 
 ```sh
-python3 -m http.server 8000 --directory heli.studio
-# open http://localhost:8000/
+python3 -m http.server 9000 --directory heli.studio
+# open http://localhost:9000/
 ```
 
 ## What was fixed
