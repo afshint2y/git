@@ -1,5 +1,5 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Heli Studio Proposal</title>
+<title>Pocky Proposal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap">
@@ -1610,6 +1610,31 @@ body.on-ink .hb-menu{background:#0A0A0A!important;border:1px solid #2A2A2A!impor
 body.on-ink .hb-menu a.on{color:#12110D!important}
 .total .row.credit b,.total .row.credit b:last-child{background:var(--yg)!important;box-shadow:inset 0 0 0 1px #E3E3E3;border-radius:6px;padding:2px 8px!important}
 
+/* Pocky instance: understanding columns, approach tags, three cases, team line, second CTA */
+.ch2:has(.und){grid-template-columns:1fr;gap:clamp(28px,4vw,64px)}
+.ch2:has(.und) .lead{max-width:22ch}
+.und{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
+.und-h{font-size:var(--t-h3);letter-spacing:-.02em;line-height:1.3;margin:10px 0 14px;max-width:24ch}
+.und-l li{font-size:var(--t-small);padding:10px 0;border-top:1px solid var(--line)}
+.ap-tag{display:inline-block;margin-top:16px;background:var(--yg);color:var(--ink);font-size:13px;font-weight:600;padding:4px 11px;border-radius:999px}
+.cases.c-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.cases.c-3 .case .open{white-space:nowrap;flex:none}
+.case .c-out{font-size:var(--t-small);color:var(--text-2);max-width:40ch}
+.drawer .panel .frame+.frame{margin-top:-12px}
+.team-lead{font-size:var(--t-h2);font-weight:450;letter-spacing:-.035em;line-height:1.2;max-width:34ch;text-wrap:balance}
+.team-lead b{font-weight:450}
+.t-dots{display:inline-flex;vertical-align:middle;margin:0 .1em}
+.t-dots i{width:1em;height:1em;border-radius:50%;background:var(--card);border:2px solid var(--paper);margin-left:-.26em;display:grid;place-items:center;font-style:normal}
+.t-dots i b{font-size:.26em;font-weight:600;letter-spacing:0}
+.t-dots i:first-child{margin-left:0} .t-dots i:nth-child(2){background:var(--yg)} .t-dots i:nth-child(3){background:var(--ink);color:#fff}
+.t-obj{display:inline-grid;place-items:center;width:1.2em;height:1.2em;vertical-align:middle;border-radius:.3em;background:var(--metal);box-shadow:0 6px 16px rgba(0,0,0,.12)}
+.t-obj svg{width:52%;fill:#151515}
+.team{grid-template-columns:repeat(4,minmax(0,1fr))}
+.team .tph{font-size:var(--t-meta);color:var(--mute);margin-top:4px}
+.pkg .stub small{font-size:.45em;letter-spacing:0;color:var(--text-2)}
+.cta.ghost{background:#fff;border:1px solid var(--line)} .cta.ghost .ar{background:var(--paper);color:var(--ink)}
+@media (max-width:860px){.und,.cases.c-3,.team{grid-template-columns:1fr}}
+
 /* yellow back to the flat #FDF451 */
 :root{--lime:#FDF451;--yg:#FDF451}
 .cta,.t-stub,.bt-stub,.sol .k,.sol-head .k,.proj-h span,.ph-body .gate,.facts .accent,.bub,.pkg[aria-pressed="true"] .stub,.bar.done,.hb-menu a.on{box-shadow:none!important}
@@ -1646,138 +1671,135 @@ body.on-ink .hb-menu a.on{color:#12110D!important}
    PROPOSAL CONFIGURATION
    Everything client-specific lives here. Modules render from this object.
    TBC = not yet confirmed: renders as a visible "To be confirmed" marker.
-   Source for this instance: D & She Project Proposal (Discovery Deck, Jul 2026, V1).
+   Source for this instance: Pocky proposal content (HS-2026-042, 21 Oct 2026).
    ════════════════════════════════════════════════════════════════════ */
 const TBC = null;
 const PROPOSAL = {
-  client:{ name:'D & She', industry:'Gold jewelry', location:'London', site:'dandshe.com' },
-  project:{ title:'Project Proposal', name:'Brand Identity & Website', deck:'Discovery Deck', date:'July 2026', version:'V1',
+  client:{ name:'Pocky', legal:'Pocky Group AB', industry:'Tobacco-free e-cigarettes & e-liquids', location:'Sweden' },
+  project:{ title:'A proposal for Pocky', name:'Visual Identity & Packaging', deck:'Project Proposal', date:'21 October 2026', version:'HS-2026-042',
+    intro:'A visual identity and packaging system for Pocky, made for a younger, adult Scandinavian audience and ready for production.',
     film:'assets/horse.mp4', poster:'assets/horse-poster.jpg' },
+  currency:'€',
 
   glance:[
-    ['The project','A brand identity and a website for D & She, a new London-based jewelry brand specializing in gold.'],
-    ['What you need','A distinctive identity that feels premium without relying on the visual codes every premium jewelry brand already uses, and a digital presence built around it.'],
-    ['What we propose','A focused brand identity first, then a website designed and developed on top of it. Two phases, one system.'],
-    ['The outcome','A brand that is recognisably D & She across every touchpoint, and a refined, interactive website ready to grow with the brand.']],
+    ['The project','Identity and packaging for Pocky\'s new tobacco-free range.'],
+    ['What you need','A brand native to younger Scandinavian adults, fast.'],
+    ['What we propose','Identity first, packaging overlapping it, files sooner.'],
+    ['The outcome','One brand, clear guidelines, print-ready packs.']],
 
-  challenge:{
-    title:'Building distinction',
-    text:['D & She is entering a highly competitive jewelry market, where premium brands often rely on similar visual codes and digital experiences. The challenge is to establish an identity that feels luxurious and refined without becoming conventional or predictable.',
-          'That means building a cohesive brand and digital experience with its own recognisable character, balancing the timeless value of gold with a contemporary, expressive approach that can stand out and grow with the brand.'],
-    confirm:[['Target audience and price positioning','Women 25 to 45, premium'],['Launch date or key commercial moments','Spring 2027 launch'],['Sales model','Online store first'],['Existing assets','Name only']]},
+  understanding:{
+    title:'Keep the name. Build a brand for who\'s next.',
+    cols:[
+      ['Your business','A new tobacco-free range, built for Scandinavia.',['Tobacco-free e-cigarettes','New pod system','Proprietary e-liquid line','Adults 20–35 + existing customers']],
+      ['The challenge','Supplier-led design that looks like everyone else.',['Built for an older audience','Generic category aesthetic','Tight production timeline']],
+      ['The opportunity','Keep the name, build a sharper system around it.',['Native to Scandinavia','Credible on Instagram & TikTok','One system, identity to pack']]]},
 
   objectives:[
-    ['Distinction','An identity that cannot be mistaken for another gold jewelry brand.'],
-    ['Premium perception','A visual and verbal language that reads as luxurious and refined, not conventional.'],
-    ['Consistency','One system that keeps every touchpoint, from social to packaging to web, unmistakably D & She.'],
-    ['A digital flagship','A website that feels interactive and refined, and carries the identity rather than templating it.'],
-    ['Room to grow','A foundation flexible enough for new collections and channels without starting over.']],
+    ['Resonance','Speaks to adults 20 to 35 without losing the customers Pocky already has.'],
+    ['One system','Logo, colour, type and graphic language working as one brand.'],
+    ['Speed to production','A direct path from approved identity to print-ready packs.'],
+    ['Social credibility','At home on Instagram and TikTok, apart from supplier-led design.'],
+    ['Room to grow','A foundation for the pod system, the e-liquid line and what comes next.']],
 
-  perspective:{
-    lead:['Gold is timeless.','The brand around it should not feel dated.'],
+  approach:{
     cols:[
-      ['How we read it','The category competes on the same signals: serif logotypes, beige tones, soft-focus product shots. Looking premium is easy; looking like yourself is the hard part.'],
-      ['The opportunity','A new brand has no legacy to protect. D & She can own a sharper, more editorial expression while the product itself carries the warmth.'],
-      ['Our direction','Swiss typography, clean editorial layouts and a disciplined grid, with imagery that gives gold room. Restraint in the system, character in the details.']],
+      ['Nordic, not generic','Scandinavian clarity with a sharper graphic edge, so Pocky stops looking like its suppliers and starts looking like itself.','Distinct on shelf and in feed'],
+      ['Identity and packaging as one process','We design the identity with the pack in mind from week one, so approval flows straight into packaging instead of starting over.','No gap between phases'],
+      ['Built for production','We work inside your existing print templates, design around the mandatory warning areas and check artwork with your manufacturer before handoff.','Files your suppliers can use']],
     images:['assets/column.jpg','assets/door.jpg','assets/footprint.jpg','assets/hands.jpg','assets/eye.jpg']},
 
-  /* services: id, pricing and scope. `requires` lists services this one cannot exist without. */
+  /* services: id, pricing and scope. `requires` lists services this one cannot exist without.
+     `after` starts a service at that week when the named service is also selected. */
   services:[
-    { id:'branding', name:'Branding', tab:'Branding & Visual Identity', price:4000, weeks:6, requires:[],
-      summary:'A focused identity foundation for D & She.',
-      need:'A distinctive identity in a crowded premium category.',
-      outcome:'A recognisable, premium brand with clear rules for every touchpoint.',
-      activities:['Discovery and alignment','Identity and messaging','Visual moodboard','Logo and visual identity','Handoff and review'],
-      deliverables:[['2 mood board routes'],['Verbal identity'],['2 visual identity alternatives',['Logo alternatives','Typography system','Color system','Imagery guideline','Basic visual guidelines']]],
-      spec:[['Directions explored','2 mood board routes · 2 visual identity alternatives'],['Revision rounds','4 rounds, one after each feedback session'],['Final file formats','AI, SVG, PDF and PNG; brand guidelines as PDF'],
-            ['Brand applications','Scaling across social, app and web is part of the process; the exact applications delivered are','social templates, packaging label and stationery'],['Not included','Photography, printing and copywriting beyond brand messaging']]},
-    { id:'website', name:'Website Design & Development', price:6000, weeks:10, requires:[], estimated:true,
-      summary:'A premium digital experience built around the brand.',
-      need:'A digital presence as refined as the product.',
-      outcome:'An interactive, responsive website aligned with the identity.',
-      activities:['Website strategy and structure','UX and wireframes','UI design and interaction','Responsive development','QA and launch'],
-      deliverables:[['Website strategy & structure'],['Sitemap & user flow'],['UX & wireframes'],['Design direction'],['Responsive UI design'],['Interactive experiences'],['Motion & micro-interactions'],['Responsive development'],['QA & launch support']],
-      spec:[['Platform','Webflow or Shopify, agreed at kickoff'],['Number of pages or templates','Up to 8 page templates'],['E-commerce','Product catalogue with up to 50 products'],['Content and product photography','Supplied by D & She'],['Hosting and domain','Set up by Heli Studio, paid by D & She'],['Revision rounds','2 rounds per design stage']]}],
+    { id:'identity', name:'Visual Identity', short:'Identity', price:4200, weeks:6, requires:[],
+      summary:'A complete brand system for Pocky\'s next stage.',
+      need:'A look built for a younger, adult Scandinavian audience.',
+      outcome:'A recognisable identity with clear rules for every touchpoint.',
+      ticketLine:'The new brand system.',
+      ticket:['Logo family','Colour & type','Patterns & imagery','Mockups & staff apparel','Guidelines & files'],
+      activities:['Discovery and category audit','Two creative directions','Logo family and identity system','Mockups, staff apparel and guidelines'],
+      deliverables:[['Logo family: primary, secondary & icon'],['Colour palette & typography system'],['Graphic language & patterns'],['Imagery & visual direction'],['Mockups: website, social & point of sale'],['Staff apparel: t-shirt, hoodie & cap'],['Brand guidelines & asset files']],
+      spec:[['Directions explored','2 moodboard routes · 2 identity alternatives'],['Revision rounds','3 rounds, one after each feedback session'],['Final file formats','AI, SVG, PDF and PNG; guidelines as PDF'],
+            ['Applications','Website, social and POS mockups; 3 staff apparel items'],['Not included','Photography, copywriting, website build and printing']]},
+    { id:'packaging', name:'Packaging Design', short:'Packaging', price:2600, weeks:4, requires:[], after:{ id:'identity', week:4 },
+      summary:'Print-ready packaging for three products and the shipping carton.',
+      need:'Packaging that matches the new brand and is ready for production.',
+      outcome:'Print-ready artwork your manufacturers can use straight away.',
+      ticketLine:'Packs ready for production.',
+      ticket:['3 product packs','Shipping carton','Print-ready files'],
+      activities:['Packaging concept on a lead product','Three products and the shipping carton','Prepress check and print-ready files'],
+      deliverables:[['Packaging design system'],['3 product packs on your existing templates'],['Shipping carton for online orders'],['Print-ready artwork for each pack'],['Prepress check with your manufacturer']],
+      spec:[['Templates','Your 3 existing print template files (dielines)'],['Revision rounds','2 rounds per design stage'],['Mandatory information','Health warnings and legal text supplied by Pocky; we design around the required areas'],
+            ['Final file formats','Print-ready PDF with bleed and outlined type, plus source AI files'],['Not included','New dielines, structural design, printing and production costs']]}],
 
-  bundle:{ ids:['branding','website'], credit:2000,
-    note:'When both services are selected, a $2,000 package credit applies to the total project cost.',
-    sequence:'The two phases do not need to begin at the same time. We can establish the brand foundation first and move into the website once the visual direction is defined.'},
+  bundle:{ ids:['identity','packaging'], credit:800,
+    note:'When both services are selected, a €800 package credit applies to the total project cost.',
+    sequence:'Packaging starts once the identity is approved in week 4, so print-ready files arrive in week 8, not week 10.'},
 
-  /* process modules: weeks are positions on the shared timeline (0-based, fractional allowed) */
+  /* process modules: weeks are positions inside each service (0-based); `after` shifts them on the shared timeline */
   process:{
-    branding:[
-      { glyph:0, name:'Discovery', start:0, end:1, purpose:'Understand the product, audience, goals, competitive landscape and visual references before any design.',
-        activities:'Kick-off session, brand and market review', deliverables:'Agreed creative direction', you:'Kick-off session, share references and context', gate:null, ms:'Kick-off', msW:0},
-      { glyph:1, name:'Identity & Messaging', start:1, end:2, purpose:'Shape how D & She speaks: tone of voice, messaging principles and key brand phrases.',
-        activities:'Language system for social, marketing and product communication', deliverables:'Verbal identity', you:'Review the language direction', gate:null},
-      { glyph:2, name:'Visual Moodboard', start:1, end:2, purpose:'Set the visual direction: typography, layouts, color, grid systems and imagery references.',
-        activities:'Two moodboard routes, presented with rationale', deliverables:'2 mood board routes', you:'Choose one route in the feedback session', gate:'Direction approved', ms:'Feedback session', msW:1.5},
-      { glyph:3, name:'Logo & Visual Identity', start:2, end:5, purpose:'Build the core identity system so the brand feels precise, modern and seen.',
-        activities:'Logo direction, typography, colors, layout rules, graphic elements', deliverables:'2 visual identity alternatives', you:'Select and refine one alternative', gate:null},
-      { glyph:4, name:'Scaling the Identity', start:3, end:5, purpose:'Extend the identity across social, app, web and key touchpoints so it stays consistent and flexible.',
-        activities:'Applying the system to key touchpoints', deliverables:'Imagery guideline · applications', you:'Feedback session', gate:'Identity approved', ms:'Feedback session', msW:4.5},
-      { glyph:5, name:'Handoff & Review', start:5, end:6, purpose:'Review the full direction together, refine on feedback and prepare final files.',
-        activities:'Final refinements, file preparation', deliverables:'Basic visual guidelines · final files', you:'Final review and sign-off', gate:null, ms:'Final delivery', msW:6}],
-    website:[
-      { glyph:6, name:'Strategy & Structure', start:0, end:2, purpose:'Define what the site needs to do, for whom, and how it is organised.',
-        activities:'Website strategy, sitemap, user flow', deliverables:'Website strategy & structure · sitemap & user flow', you:'Kick-off, confirm goals and content', gate:'Structure approved', ms:'Kick-off', msW:0, skipMsWhenBundled:true},
-      { glyph:7, name:'UX & UI Design', start:2, end:6, purpose:'Turn the structure into an interface that carries the brand.',
-        activities:'Wireframes, design direction, responsive UI, interaction and motion', deliverables:'UX & wireframes · responsive UI design · motion & micro-interactions', you:'Weekly feedback sessions', gate:'Design approved'},
-      { glyph:8, name:'Development & QA', start:6, end:10, purpose:'Build the site responsively, test it across devices and prepare launch.',
-        activities:'Responsive development, interactive experiences, QA', deliverables:'Responsive development · QA & launch support', you:'Content, review and launch sign-off', gate:null, ms:'Launch', msW:10}]},
-  /* timeline view: one row per service, consecutive segments [label, startWeek, endWeek] */
+    identity:[
+      { glyph:0, name:'Discovery & Audit', start:0, end:1, purpose:'Understand the range, both audiences and the Scandinavian category, and review what your suppliers produce today.',
+        deliverables:'Category audit & creative brief', you:'Kick-off session, current packaging, templates and range plans', gate:null},
+      { glyph:2, name:'Creative Direction', start:1, end:2, purpose:'Two visual routes for colour, type, imagery and graphic language, each shown on social and on a pack.',
+        deliverables:'2 direction routes', you:'Choose one route', gate:'Direction approved'},
+      { glyph:3, name:'Identity System', start:2, end:4, purpose:'Build the logo family, palette, typography, patterns and imagery rules, tested on a pack from the start.',
+        deliverables:'Logo family & full identity system', you:'Two feedback sessions', gate:'Identity approved'},
+      { glyph:7, name:'Applications & Guidelines', start:4, end:6, purpose:'Show the system at work on web, social, point of sale and staff apparel, then document it.',
+        deliverables:'Mockups, apparel, guidelines & asset files', you:'Final review and sign-off', gate:null}],
+    packaging:[
+      { glyph:4, name:'Pack Concept', start:0, end:1, purpose:'Apply the approved identity to one lead product and set the hierarchy around the mandatory warning areas.',
+        deliverables:'Packaging concept', you:'Feedback session', gate:'Concept approved'},
+      { glyph:5, name:'Range & Carton', start:1, end:3, purpose:'Roll the concept out across all three products on your templates, plus the shipping carton.',
+        deliverables:'3 packs & shipping carton', you:'Product information and legal text', gate:null},
+      { glyph:8, name:'Prepress & Handoff', start:3, end:4, purpose:'Check the artwork with your manufacturer, fix what production needs and hand over the files.',
+        deliverables:'Print-ready files', you:'Manufacturer contact and sign-off', gate:null}]},
+  /* timeline view: one block per service, bars [label, startWeek, endWeek, row], sessions [label, week position] */
   timeline:{
-    branding:{ weeks:6,
-      bars:[['Discovery',0,1,0],['Identity & Messaging',1,2,0],
-            ['Visual Moodboard',1,2,1],['Visual Identity',2,5,1],['Handoff & Review',5,6,1]],
-      sessions:[['Kick-off session',0],['Feedback session',2],['Feedback session',5],['Final delivery',6]]},
-    website:{ weeks:10,
-      bars:[['Strategy & Structure',0,2,0],['UX & UI Design',2,6,0],['Development & QA',6,10,0]],
-      sessions:[['Kick-off session',0],['Feedback session',2],['Feedback session',6],['Launch',10]]}},
-  /* when both run, the website starts once the visual direction is approved (end of branding week 2) */
-  websiteOffsetWhenBundled:2,
+    identity:{ weeks:6,
+      bars:[['Discovery',0,1,0],['Direction',1,2,0],['Identity System',2,4,0],['Applications & Guidelines',4,6,0]],
+      sessions:[['Kick-off',0],['Feedback',2],['Feedback',4],['Final delivery',6]]},
+    packaging:{ weeks:4,
+      bars:[['Concept',0,1,0],['Range & Carton',1,3,0],['Prepress',3,4,0]],
+      sessions:[['Feedback',1],['Feedback',3],['Print-ready files',4]]}},
 
   collaboration:{
-    studio:['Project direction and planning','Strategy, design and development','Weekly progress and feedback sessions','Rationale for every direction we present','Final files and handoff'],
-    client:['One decision-maker for approvals','Product information and collections','References you like and dislike',['Feedback within the agreed window','2 working days'],['Website copy and product photography','Before week 7'],['Access to domain, hosting and accounts','Before week 9']],
-    cadence:[['Feedback','One session per week'],['Channel','Slack and video calls'],['Response time','Within 1 working day'],['Point of contact','Hadis Khabbaz']]},
+    studio:['Direction & planning','Identity & packaging design','Weekly feedback sessions','Print-ready files & handoff'],
+    client:['One decision-maker',['Packaging & template files','Before kickoff'],['Product info & range plans','Week 1'],['Feedback','Within 2 days'],['Health warnings & legal text','Before week 5'],['Manufacturer contact','Before week 7']],
+    cadence:[['Feedback','Once a week'],['Channel','Slack & video calls'],['Response time','Within 1 working day'],['Your contact','Project manager']]},
 
-  team:[['Afshin Mohammadi','Design Director','Owns the creative direction and signs off every stage.'],['Hadis Khabbaz','Project Manager','Your point of contact for timeline, feedback and delivery.'],[null,'Brand Designer','Builds the logo, type, colour and visual language.'],[null,'UX/UI Designer','Designs the site structure, wireframes and interface.'],[null,'Front-end Developer','Builds, tests and launches the responsive website.'],[null,'Motion Designer','Adds logo motion and micro-interactions.']],
-  payment:{ milestones:'40% to start, 30% once the visual direction is approved, 30% on final delivery', stages:3, extra:'Third-party costs such as font licences, stock imagery, hosting or plugins', validity:'30 days from the date of this proposal' },
+  team:{
+    roles:[['AD','Art Director','Throughout','Owns the creative direction across identity and packaging, and signs off every stage.'],['PM','Project Manager','Throughout','Your point of contact for timeline, feedback and delivery.'],['BD','Brand Designer','Identity phase','Builds the logo family, colour, type, patterns and guidelines.'],['PD','Packaging Designer','Packaging phase','Designs the three packs and the carton, and prepares print-ready files.']]},
+  payment:{ split:[['To start',.4],['Identity approved',.3],['Final delivery',.3]], stages:3, extra:'Third-party costs such as fonts, stock imagery, printing and production', validity:'20 November 2026, 30 days from the date of this proposal' },
 
   terms:[
-    ['Payment schedule','40% to start, 30% once the visual direction is approved, 30% on final delivery. Invoices are due within 7 days.'],
-    ['Revisions','Branding includes 4 revision rounds, the website 2 rounds per design stage. Extra rounds are billed at the hourly rate.'],
-    ['Scope','The work covers the services and deliverables in this proposal. Anything else is quoted separately before it starts.'],
-    ['Out-of-scope requests','Quoted separately and approved in writing before any work starts.'],
-    ['Client dependencies','Timelines assume feedback and materials arrive on schedule. Late feedback moves the timeline.'],
+    ['Payment schedule','40% to start, 30% once the identity is approved, 30% on final delivery. Invoices are due within 7 days.'],
+    ['Revisions','The identity includes 3 revision rounds, packaging 2 rounds per design stage. Extra rounds are billed at the hourly rate.'],
+    ['Scope','The work covers the services and deliverables in this proposal. Anything else is quoted separately and approved in writing first.'],
+    ['Client dependencies','Timelines assume feedback, templates and product information arrive on schedule. Late input moves the timeline.'],
     ['Timeline assumptions','Durations are estimates until the start date is confirmed at kickoff.'],
-    ['Intellectual property','Full rights to the final approved work transfer to D & She once the final payment is received.'],
-    ['Third-party costs','Fonts, stock imagery, hosting and plugins are paid by D & She at cost.'],
+    ['Compliance','Pocky is responsible for the regulatory content of its packaging, including health warnings and product claims.'],
+    ['Intellectual property','Full rights to the final approved work transfer to Pocky Group AB once the final payment is received.'],
+    ['Third-party costs','Fonts, stock imagery, printing and production are paid by Pocky at cost.'],
     ['Proposal validity','30 days from the date of this proposal.']],
 
-  start:{ earliest:'23 September 2026', status:'Fully available' },
+  start:{ earliest:'3 November 2026', status:'Fully available' },
 
-  steps:['Review the proposal','Select the scope that fits','Confirm the proposal','Agreement and initial payment','Schedule the kickoff'],
+  steps:['Review the proposal','Select the scope that fits','Confirm the proposal','Agreement and first payment','Schedule the kickoff'],
 
-  contact:{ person:'Hadis Khabbaz', email:'hi@heli.studio', site:'https://heli.studio/', behance:'https://www.behance.net/helistudio', linkedin:'https://www.linkedin.com/company/helistudio', dribbble:'https://dribbble.com/piqostudio' },
+  contact:{ person:'Project manager', email:'hi@heli.studio', site:'https://heli.studio/', behance:'https://www.behance.net/helistudio', linkedin:'https://www.linkedin.com/company/helistudio', dribbble:'https://dribbble.com/piqostudio' },
 
   work:{
     cases:[
-      { name:'Yapay', sector:'Fintech payments platform', img:'assets/yapay.jpg', challenge:'A complex payments flow that felt technical and hard to trust.', solution:'A calm, clear interface and design system built around confidence at each step.', deliverables:'Product design, design system, brand refresh', outcome:'A simpler onboarding and a product that reads as reliable.' },
-      { name:'Luckycharm', sector:'Agriculture platform', img:'assets/luckycharm.jpg', challenge:'Farm data spread across tools that growers rarely opened.', solution:'One dashboard that turns field data into plain daily actions.', deliverables:'UX research, product design, web app UI', outcome:'A platform growers can use in the field without training.' }],
-    creds:[['4<small>One after each feedback session</small>','Revision rounds'],['4<small>2 Moodboard routes · 2 Identity alternatives</small>','Directions to choose from'],['4<small>Direction · Branding · UX/UI Design · Development</small>','Disciplines on your team'],['@sessions','Sessions with you']],
-    more:[['Piqo Studio Rebranding','https://dribbble.com/shots/23358838-Piqo-Studio-Rebranding','assets/vision.jpg'],
-          ['Financial App','https://dribbble.com/shots/27707046-Financial-App','assets/typeface.jpg'],
-          ['Iconly Financial icons','https://dribbble.com/shots/27707075-Iconly-Financial-icons','assets/screw.jpg'],
-          ['Detax Landing','https://dribbble.com/shots/24198450-Detax-Landing','assets/door.jpg'],
-          ['HR Dashboard design','https://dribbble.com/shots/17350060-HR-Dashboard-design','assets/column.jpg']],
-    moreArePlaceholders:true },
+      { name:'Heli Technology', tags:'Brand Identity, Social System', outcome:'One recognisable voice across products and social channels.', imgs:['assets/work/helitechnology-2.avif','assets/work/helitechnology-1.avif','assets/work/helitechnology-3.avif'] },
+      { name:'Money Mend', tags:'Brand Identity, Visual System', outcome:'A distinctive identity in a category full of look-alikes.', imgs:['assets/work/moneymend-2.avif','assets/work/moneymend-1.avif','assets/work/moneymend-3.avif'] },
+      { name:'Dizno', tags:'Brand Identity, Guidelines', outcome:'A flexible brand system built to grow with new products.', imgs:['assets/work/dizno-3.avif','assets/work/dizno-1.avif','assets/work/dizno-2.avif'] }],
+    creds:[['4<small>Art direction · Brand · Packaging · Project management</small>','Specialists on your team'],['@weeks','From first sketch to print-ready files'],['2<small>2 moodboard routes · 2 identity alternatives</small>','Identity routes to choose from'],['@sessions','Sessions with you']] },
 
   capabilities:[
-    ['Visual & Creative',['Marketing Design','Motion Design','3D Design','Illustration','Icon Design','Social & Campaign Assets','AI Advertising']],
-    ['Product Design',['Product Discovery','Product Strategy','UX Research','UX/UI Design','Interaction Design','Design Systems','Prototyping','Usability Testing']],
-    ['Web Development',['Landing Pages','Marketing Websites','CMS Websites','No-Code Development','Webflow Development','Framer Development','Responsive Web Design','Website Maintenance']]]
+    ['Brand Identity',['Verbal Identity','Logo Design','Motion Graphic','2D & 3D Illustration','AI Avatar Design','Brand Style Guide']],
+    ['Product Design',['User Research','UX Architecture','Wireframing & Prototyping','UI Design','Design Systems','Interaction Design']],
+    ['Development',['Front-End Development','Interactive Web Development','Framer Development','Webflow Development','WordPress Development','Website Optimization']]]
 };
 
 /* ════════════════════════════════════════════════════════════════════
@@ -1790,17 +1812,19 @@ const RM=matchMedia('(prefers-reduced-motion: reduce)').matches, FINE=matchMedia
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v)), pad=n=>String(n).padStart(2,'0');
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const t=v=>v===TBC||v===undefined?'<span class="tbc">To be confirmed</span>':Array.isArray(v)?v.map(t).join(' '):esc(v);
-const money=n=>'$'+n.toLocaleString('en-US');
+const money=n=>(P.currency||'$')+n.toLocaleString('en-US');
 const svcById=Object.fromEntries(P.services.map(s=>[s.id,s]));
 const state={ sel:new Set(P.services.map(s=>s.id)) };
 const listeners=[]; const onChange=f=>{listeners.push(f)}; const emit=()=>listeners.forEach(f=>f());
 const selected=()=>P.services.filter(s=>state.sel.has(s.id));
 const bundled=()=>P.bundle.ids.every(id=>state.sel.has(id));
+const offOf=id=>{const a=svcById[id].after;return a&&state.sel.has(a.id)?a.week:0};
+const shortOf=s=>s.short||s.name;
 function pricing(){const sub=selected().reduce((a,s)=>a+s.price,0), credit=bundled()?P.bundle.credit:0;return{sub,credit,total:sub-credit}}
 function plan(){ // laid-out phases for the selected services
   const out=[]; let offset=0;
   selected().forEach(s=>{
-    const off=(s.id==='website'&&state.sel.has('branding'))?P.websiteOffsetWhenBundled:0;
+    const off=offOf(s.id);
     (P.process[s.id]||[]).forEach(ph=>out.push({...ph,svc:s,off,start:ph.start+off,end:ph.end+off}));
   });
   return out;
@@ -1816,16 +1840,16 @@ const head=(title,q,qk)=>`<header class="sh"><p class="eyebrow">${qk||''} <span 
 
 M.cover=()=>sec('cover','light ink cover','Intro','Cover',`
   <p class="deck">${esc(P.project.deck)}</p>
-  <div class="cv-row"><div class="cv-l"><div class="film" aria-hidden="true"><video src="${P.project.film}" poster="${P.project.poster}" autoplay muted loop playsinline preload="auto"></video></div><p class="cv-desc"><b>${esc(P.project.title)}</b>${esc(P.glance[0][1])}</p></div><h1>${esc(P.client.name)}<i class="sq" aria-hidden="true"></i></h1></div>
+  <div class="cv-row"><div class="cv-l"><div class="film" aria-hidden="true"><video src="${P.project.film}" poster="${P.project.poster}" autoplay muted loop playsinline preload="auto"></video></div><p class="cv-desc"><b>${esc(P.project.title)}</b>${esc(P.project.intro)}</p></div><h1>${esc(P.client.name)}<i class="sq" aria-hidden="true"></i></h1></div>
   <div class="meta">
-    <div><p>Client</p><p>${esc(P.client.name)} · ${esc(P.client.location)}</p></div>
-    <div><p>Project</p><p>${esc(P.project.name)}</p></div>
-    <div><p>Date</p><p>${esc(P.project.date)}</p></div>
-    <div><p>Prepared by</p><p>Heli Studio · ${esc(P.project.version)}</p></div>
+    <div><p>Client</p><p>${esc(P.client.legal)} · ${esc(P.client.location)}</p></div>
+    <div><p>Services</p><p>${P.services.map(s=>esc(s.name)).join(' · ')}</p></div>
+    <div><p>Issued</p><p>${esc(P.project.date)}</p></div>
+    <div><p>Reference</p><p>${esc(P.project.version)} · Heli Studio</p></div>
   </div>`);
 
-M.glance=()=>sec('glance','light','Start','In short',
-  head('In short','Everything above, in one minute.','Before you decide')+`
+M.glance=()=>sec('glance','light','Start','Before you decide',
+  head('<span data-bind="decide"></span>','Everything above, in one minute.','Before you decide')+`
   <ul class="glance-rows grow">${P.glance.map(([k,v])=>`<li><p class="k">${k}</p><p>${esc(v)}</p></li>`).join('')}</ul>
   <div class="facts">
     <div><p class="k">Services</p><p class="v" data-bind="svcCount"></p></div>
@@ -1834,26 +1858,22 @@ M.glance=()=>sec('glance','light','Start','In short',
     <div class="accent"><p class="k">Investment</p><p class="v" data-bind="total"></p></div>
   </div>`);
 
-M.challenge=()=>sec('challenge','light','Understand','The challenge',
-  head('The challenge','Where D &amp; She stands today, and what needs solving.','What are we solving')+`
+M.challenge=()=>sec('challenge','light','Understand','Understanding',
+  head('Understanding',`Where ${esc(P.client.name)} stands today, and what needs solving.`,'What are we solving')+`
   <div class="ch2 grow">
-    <h3 class="lead wt" id="weightTitle" aria-label="${esc(P.challenge.title)}">${esc(P.challenge.title)}</h3>
-    <div class="ch-main">
-      <p class="ch-big">${esc(P.challenge.text[0])}</p>
-      <div class="ch-sub"><p class="body">${esc(P.challenge.text.slice(1).join(' '))}</p>
-        <div class="confirm"><h3>To confirm together at kickoff</h3><ul>${P.challenge.confirm.map(([c,v])=>`<li><span>${esc(c)}</span><em class="cv2">${esc(v)}</em></li>`).join('')}</ul></div></div>
-    </div>
+    <h3 class="lead wt" id="weightTitle" aria-label="${esc(P.understanding.title)}">${esc(P.understanding.title)}</h3>
+    <div class="und">${P.understanding.cols.map(([k,h,l])=>`<div class="rule"><p class="k">${esc(k)}</p><p class="und-h">${esc(h)}</p>
+      <ul class="und-l">${l.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`).join('')}</div>
   </div>`);
 
 M.objectives=()=>sec('objectives','light','Define','Objectives',
   head('Objectives','What this project is meant to achieve. Outcomes, not activities.','Why it matters')+`
   <ol class="obj grow">${P.objectives.map(([h,p],i)=>`<li><i class="sqb" aria-hidden="true"></i><h3>${esc(h)}</h3><span class="no num">${pad(i+1)}</span><p>${esc(p)}</p></li>`).join('')}</ol>`);
 
-M.perspective=()=>sec('perspective','light persp','Propose','Our perspective',
-  head('Our perspective','How we read the brief, and the direction we would take.','Why this approach')+`
-  <h3 class="lead">${esc(P.perspective.lead[0]).replace('timeless','<mark class="hl">timeless</mark>')}<br><span class="grey">${esc(P.perspective.lead[1])}</span></h3>
-  <div class="cols c3">${P.perspective.cols.map(([h,p])=>`<div class="rule"><h3>${esc(h)}</h3><p class="t">${esc(p)}</p></div>`).join('')}</div>
-  <div class="pills" aria-hidden="true">${P.perspective.images.map((src,i)=>`<div class="pill${i===0?' on':''}"><img src="${src}" alt="" loading="lazy"></div>`).join('')}</div>`);
+M.perspective=()=>sec('perspective','light persp','Propose','Approach',
+  head('Approach','How we\'ll make it happen.','Why this approach')+`
+  <div class="cols c3 grow">${P.approach.cols.map(([h,p,tag])=>`<div class="rule"><h3>${esc(h)}</h3><p class="t">${esc(p)}</p><p class="ap-tag">${esc(tag)}</p></div>`).join('')}</div>
+  <div class="pills" aria-hidden="true">${P.approach.images.map((src,i)=>`<div class="pill${i===0?' on':''}"><img src="${src}" alt="" loading="lazy"></div>`).join('')}</div>`);
 
 M.solution=()=>sec('solution','light','Propose','Proposed solution',
   head('Proposed solution','Each service answers a specific need and leads to a specific outcome.','What we propose')+`
@@ -1865,13 +1885,11 @@ M.solution=()=>sec('solution','light','Propose','Proposed solution',
 
 M.work=()=>sec('work','light','Prove','Relevant work',
   head('Relevant work','Built inside real product environments. Select a project for details.','Why trust us')+`
-  <div class="cases">${P.work.cases.map((c,i)=>`<button class="case" data-case="${i}"><span class="frame"><img src="${c.img}" alt="${esc(c.name)}, ${esc(c.sector)}" loading="lazy"></span>
-    <span class="cap"><span><b>${esc(c.name)}</b>&nbsp;&nbsp;<span>${esc(c.sector)}</span></span><span class="open">Case details</span></span></button>`).join('')}</div>
+  <div class="cases c-${P.work.cases.length}">${P.work.cases.map((c,i)=>`<button class="case" data-case="${i}"><span class="frame"><img src="${c.imgs[0]}" alt="${esc(c.name)}, ${esc(c.tags)}" loading="lazy"></span>
+    <span class="cap"><span><b>${esc(c.name)}</b>&nbsp;&nbsp;<span>${esc(c.tags)}</span></span><span class="open">Case details</span></span><span class="c-out">${esc(c.outcome)}</span></button>`).join('')}</div>
   <div class="proj"><p class="proj-h">This project <span>${esc(P.client.name)} · ${esc(P.project.name)}</span></p>
-  <div class="creds">${P.work.creds.map(([n,l])=>`<div class="rule"><p class="n num"${n==='@sessions'?' data-bind="sessions"':''}>${n===TBC?t(TBC):n==='@sessions'?'':n}</p><p>${esc(l)}</p></div>`).join('')}</div></div>
-  <details class="more" open><summary>More work on Dribbble${P.work.moreArePlaceholders?' <span class="tbc">Images to be replaced</span>':''}<span class="pm" aria-hidden="true">+</span></summary><div class="inner">
-    <div class="strip">${P.work.more.map(([n,u,img])=>`<a href="${u}" target="_blank" rel="noopener"><img src="${img}" alt="" loading="lazy">${esc(n)} ↗</a>`).join('')}</div>
-  </div></details>`);
+  <div class="creds">${P.work.creds.map(([n,l])=>`<div class="rule"><p class="n num"${n[0]==='@'?` data-bind="${n.slice(1)}"`:''}>${n===TBC?t(TBC):n[0]==='@'?'':n}</p><p>${esc(l)}</p></div>`).join('')}</div></div>
+`);
 
 M.scope=()=>sec('scope','light','Explain','Scope & deliverables',
   head('Scope &amp; deliverables','What we do, and what you receive. Open the specifics for the fine print.','What will we receive')+`
@@ -1892,8 +1910,9 @@ M.timeline=()=>`<section class="tl light pin" id="timeline" data-stage="Explain"
 </div></section>`;
 
 M.team=()=>sec('team','light','Explain','Your team',
-  head('Your team','The roles working on D &amp; She, and what each of them owns.','Who is involved')+`
-  <ol class="team grow">${P.team.map(([n,r,d],i)=>`<li><span class="no num">${pad(i+1)}</span><div><h3>${esc(r)}</h3><p class="tn">${n?esc(n):'Heli Studio team'}</p></div><p class="td">${esc(d)}</p></li>`).join('')}</ol>`);
+  head('Your team',`The roles working on ${esc(P.client.name)}, and what each of them owns.`,'Who is involved')+`
+  <p class="team-lead">A focused team of <b>${P.team.roles.length} specialists</b> <span class="t-dots" aria-hidden="true">${P.team.roles.map(([a])=>`<i><b>${esc(a)}</b></i>`).join('')}</span> takes ${esc(P.client.name)} from first sketch to print-ready files in <b data-bind="weeksN"></b>, with <b>2 identity routes</b> <span class="t-obj" aria-hidden="true"><svg viewBox="0 0 48 43"><use href="#lg"/></svg></span> to choose from and <b data-bind="sessionsN"></b> with you.</p>
+  <ol class="team grow">${P.team.roles.map(([a,r,ph,d],i)=>`<li><span class="no num">${pad(i+1)}</span><div><h3>${esc(r)}</h3><p class="tph">${esc(ph)}</p></div><p class="td">${esc(d)}</p></li>`).join('')}</ol>`);
 
 M.collab=()=>sec('collab','light','Explain','Working together',
   head('Working together','Who does what, so nothing falls between us.','How we collaborate')+`
@@ -1927,8 +1946,8 @@ M.price=()=>sec('price','light price','Invest','The investment',
     <div class="tk-back" aria-hidden="true"><div class="tk-bskin">
       <span class="tb-mark">${esc(P.client.name)}</span>
       <div class="tb-in">
-        <div class="tb-who"><p class="tb-br">Heli Studio<b>×</b>${esc(P.client.name)}</p><p class="tb-ro">Brand Identity and Website · ${esc(P.project.date)} · ${esc(P.project.version)}</p></div>
-        <dl class="tb-dl"><dt>Paid In</dt><dd>${P.payment.stages} Stages · 40 · 30 · 30</dd><dt>Valid For</dt><dd>30 Days</dd><dt>Prepared By</dt><dd>${esc(P.contact.person)}</dd></dl>
+        <div class="tb-who"><p class="tb-br">Heli Studio<b>×</b>${esc(P.client.name)}</p><p class="tb-ro">${esc(P.project.name)} · ${esc(P.project.date)} · ${esc(P.project.version)}</p></div>
+        <dl class="tb-dl"><dt>Paid In</dt><dd>${P.payment.stages} Stages · 40 · 30 · 30</dd><dt>Valid For</dt><dd>30 Days</dd><dt>Prepared By</dt><dd>Heli Studio</dd></dl>
         <p class="tb-ct">${esc(P.contact.email)}<br>heli.studio</p>
       </div></div></div>
   </div>`);
@@ -1937,9 +1956,9 @@ M.investment=()=>sec('investment','light','Invest','Investment',
   head('Investment','Choose the scope. The total, timeline and scope update with it.','How much will it cost')+`
   <div class="inv grow">
     <div class="pkgs" id="pkgs">${P.services.map(s=>`<button class="pkg" data-svc="${s.id}" aria-pressed="true">
-      <div class="tk"><div class="tk-h"><div><h3>${esc(s.name)}</h3><p>${esc(s.summary)}</p></div><span class="check" aria-hidden="true">✓</span></div><div class="perf"></div>
-      <ul>${s.deliverables.map(([d,subs])=>`<li>${esc(d)}</li>${subs?subs.map(x=>`<li class="sub">${esc(x)}</li>`).join(''):''}`).join('')}</ul></div>
-      <div class="stub num">${money(s.price)}</div></button>`).join('')}</div>
+      <div class="tk"><div class="tk-h"><div><h3>${esc(s.name)}</h3><p>${esc(s.ticketLine||s.summary)}</p></div><span class="check" aria-hidden="true">✓</span></div><div class="perf"></div>
+      <ul>${(s.ticket||s.deliverables.map(([d])=>d)).map(d=>`<li>${esc(d)}</li>`).join('')}</ul></div>
+      <div class="stub num">${money(s.price)}<small> · ${s.weeks} weeks</small></div></button>`).join('')}</div>
     <aside class="total" id="totTicket" aria-live="polite">
       <div class="t-main"><p class="k">Your selection</p><div id="totRows"></div><p class="note" id="totNote"></p><p class="msg" id="totMsg"></p></div>
       <div class="t-perf" aria-hidden="true"></div>
@@ -1947,7 +1966,7 @@ M.investment=()=>sec('investment','light','Invest','Investment',
     </aside>
   </div>
   <div>
-    <details class="more"><summary>Payment milestones<span class="pm" aria-hidden="true">+</span></summary><div class="inner"><dl class="spec"><dt>Schedule</dt><dd>${t(P.payment.milestones)}</dd></dl></div></details>
+    <details class="more"><summary>Payment milestones<span class="pm" aria-hidden="true">+</span></summary><div class="inner"><dl class="spec"><dt>Schedule</dt><dd data-bind="milestones"></dd></dl></div></details>
     <details class="more"><summary>Additional costs<span class="pm" aria-hidden="true">+</span></summary><div class="inner"><dl class="spec"><dt>Not included</dt><dd>${esc(P.payment.extra)}: quoted separately when needed</dd></dl></div></details>
     <details class="more"><summary>Proposal validity<span class="pm" aria-hidden="true">+</span></summary><div class="inner"><dl class="spec"><dt>Valid until</dt><dd>${t(P.payment.validity)}</dd></dl></div></details>
   </div>`);
@@ -1957,7 +1976,7 @@ M.terms=()=>sec('terms','light','Invest','Terms',
   <div class="terms-wrap grow">
     <div class="terms-grid">${P.terms.map(([h,v],i)=>`<div class="term"><p class="tn num">${pad(i+1)}</p><h3>${esc(h)}</h3><p class="tv">${t(v)}</p></div>`).join('')}</div>
   </div>
-  <p class="nac">This is a proposal, not a contract. <span class="smiley doodle" id="smiley" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" stroke="#131313" stroke-linecap="round" stroke-linejoin="round">
+  <p class="nac">This is a proposal, not a contract. The agreement follows once you confirm. <span class="smiley doodle" id="smiley" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" stroke="#131313" stroke-linecap="round" stroke-linejoin="round">
       <path d="M62 10c22 1 46 18 47 47 1 27-19 52-48 53-29 1-50-21-51-49C9 33 33 9 59 11" stroke-width="7"/>
       <path d="M58 14c-3-2-7-3-11-1" stroke-width="3"/>
       <g class="sm-eyes"><path class="sm-eye" d="M41 45c3-3 9-2 9 4s-8 7-10 2c-1-3 0-5 1-6z" fill="#131313" stroke-width="2"/><path class="sm-eye" d="M73 44c4 0 9 4 8 9-1 4-6 4-8 0-1-3-2-6 0-9z" fill="#131313" stroke-width="2"/></g>
@@ -1969,7 +1988,8 @@ M.next=()=>sec('next','light','Start','Next steps',`
       <ol class="nsteps">${P.steps.map((s,i)=>`<li><span class="k num">${pad(i+1)}</span><span class="v">${esc(s)}</span></li>`).join('')}</ol></div>
     <div class="nx-r">
       <div class="startcard"><p class="k">Earliest start</p><p class="date">${esc(P.start.earliest)}</p><span class="avail"><i></i>${esc(P.start.status)}</span></div>
-      <button class="cta" id="ctaApprove"><span>Approve proposal<br><span style="font-size:var(--t-small);font-weight:400" data-bind="ctaSel"></span></span><span class="ar" aria-hidden="true">→</span></button>
+      <button class="cta" id="ctaApprove"><span>Start the journey<br><span style="font-size:var(--t-small);font-weight:400">Book a call · <span data-bind="ctaSel"></span></span></span><span class="ar" aria-hidden="true">→</span></button>
+      <button class="cta ghost" id="ctaChanges"><span>Request changes<br><span style="font-size:var(--t-small);font-weight:400">Tell us what to adjust</span></span><span class="ar" aria-hidden="true">→</span></button>
     </div>
   </div>`);
 
@@ -2010,12 +2030,12 @@ M.heli=()=>`<section class="s ink hfoot" id="heli" data-stage="Start" data-label
 </section>`;
 
 M.appendix=()=>sec('appendix','light appx','Beyond','Other services',
-  head('Other services','What else Heli Studio can do for D &amp; She, beyond this project.','Beyond this project')+`
+  head('Other services',`What else Heli Studio can do for ${esc(P.client.name)}, beyond this project.`,'Beyond this project')+`
   <div class="caps grow">${P.capabilities.map(([h,l],i)=>`<div class="cap"><div class="cap-h"><span class="num">${pad(i+1)}</span><h4>${esc(h)}</h4><em>${l.length} services</em></div><ul>${l.map(x=>`<li><span>${esc(x)}</span></li>`).join('')}</ul></div>`).join('')}</div>`);
 
 const ORDER=['cover','challenge','objectives','perspective','solution','work','scope','process','timeline','team','collab','price','investment','terms','glance','next','appendix','closing','heli'];
 $('#app').innerHTML=ORDER.map(k=>M[k]()).join('');
-$('#cTl').textContent=`${P.client.name} · ${P.project.title}`;
+$('#cTl').textContent=P.project.title;
 $$('main > section').forEach((sc,i,a)=>{const e=sc.querySelector('.sf .pg');if(e)e.textContent=`${pad(i+1)} / ${pad(a.length)}`});
 const pathD=$('#lg path').getAttribute('d');
 void(`url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 43'><path d='${pathD}'/></svg>`)}")`);
@@ -2024,16 +2044,20 @@ void(`url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.or
 function bind(){
   const p=pricing(), w=totalWeeks(), sel=selected();
   const set=(k,h)=>$$(`[data-bind="${k}"]`).forEach(el=>el.innerHTML=h);
-  set('svcCount',`${sel.length}<small>${sel.map(s=>s.id==='website'?'Website':s.name).join(' + ')}</small>`);
+  set('svcCount',`${sel.length}<small>${sel.map(shortOf).join(' + ')}</small>`);
+  set('decide',`${sel.map(shortOf).join(' + ')} for ${esc(P.client.name)}, ready in ${w} weeks for ${money(p.total)}.`);
+  set('weeksN',`${w} weeks`);
+  set('milestones',P.payment.split.map(([l,f])=>`${Math.round(f*100)}% ${esc(l.toLowerCase())} (${money(Math.round(p.total*f))})`).join(' · '));
   set('weeks',`${w}<small>weeks${sel.some(s=>s.estimated)?' · est.':''}</small>`);
-  set('weeksLong',`${w} weeks in total${sel.some(s=>s.estimated)?', website weeks estimated':''}`);
+  set('weeksLong',`${w} weeks in total${sel.some(s=>s.estimated)?', some weeks estimated':''}`);
   set('total',money(p.total));
   set('coversShort',sel.map(s=>esc(s.tab||s.name)).join(' + '));
   set('creditShort',p.credit?`${money(p.credit)} package credit applied`:`${P.project.date}`);
   set('covers',`${sel.map(s=>esc(s.tab||s.name)).join(' and ')}${p.credit?`, with the ${money(p.credit)} package credit applied.`:'.'}`);
-  { const ss=sel.flatMap(sv=>(P.timeline[sv.id]?.sessions||[]).filter(([n,w])=>!(sv.id==='website'&&state.sel.has('branding')&&w===0)));
+  { const ss=sel.flatMap(sv=>(P.timeline[sv.id]?.sessions||[]).filter(([n,w])=>!(offOf(sv.id)&&w===0&&/kick/i.test(n))));
     const fb=ss.filter(([n])=>/feedback/i.test(n)).length, ko=ss.filter(([n])=>/kick/i.test(n)).length, dl=ss.length-fb-ko;
-    set('sessions',`${ss.length}<small>${[ko&&`${ko} Kick-off`,fb&&`${fb} Feedback`,dl&&`${dl} Delivery`].filter(Boolean).join(' · ')}</small>`); }
+    set('sessions',`${ss.length}<small>${[ko&&`${ko} Kick-off`,fb&&`${fb} Feedback`,dl&&`${dl} Delivery`].filter(Boolean).join(' · ')}</small>`);
+    set('sessionsN',`${ss.length} sessions`); }
   set('ctaSel',`${sel.map(s=>s.name).join(' + ')} · ${money(p.total)}`);
   $$('.sol li').forEach(li=>{const on=state.sel.has(li.dataset.svc);li.classList.toggle('off',!on);$(`[data-flag="${li.dataset.svc}"]`,li).textContent=on?'':'· not selected'});
   $$('#scopeTabs button,#procTabs button').forEach(b=>b.hidden=!state.sel.has(b.dataset.svc));
@@ -2207,7 +2231,6 @@ onChange(renderProcess);
 const tlWrap=$('#timeline'); let tlManual=null, TLW=1, BLK=[];
 const pinned=()=>matchMedia('(min-width:1000px) and (min-height:720px)').matches&&!RM;
 const ord=n=>n+(['th','st','nd','rd'][(n%100>>3^1&&n%10)||0]||'th');
-const offOf=id=>(id==='website'&&state.sel.has('branding'))?P.websiteOffsetWhenBundled:0;
 function renderTimeline(){
   BLK=selected().map(sv=>{const cfg=P.timeline[sv.id];return{sv,cfg,off:offOf(sv.id),W:cfg.weeks,bars:cfg.bars.map(([n,a,b,r])=>({name:n,start:a,end:b,row:r}))}});
   TLW=Math.max(...BLK.map(k=>k.off+k.W));
@@ -2219,7 +2242,7 @@ function renderTimeline(){
       ses.forEach(x=>{let j=lv.findIndex(last=>x.g-last>=need);if(j<0){j=lv.length;lv.push(-99)}lv[j]=x.g;x.lv=j});
       const nRows=Math.max(...k.bars.map(x=>x.row))+1, L=off/TLW*100, Wp=W/TLW*100;
       return `<div class="tl-block lane" data-b="${bi}">
-        <div class="span-row"><div class="span-lab" style="left:${L}%;width:${Wp}%"><b>${esc(sv.id==='website'?'Website Design & Development':(sv.tab||sv.name))}</b><span>Week ${off+1} to ${off+W} · ${W} weeks${sv.estimated?' · estimated':''}</span></div></div>
+        <div class="span-row"><div class="span-lab" style="left:${L}%;width:${Wp}%"><b>${esc(sv.tab||sv.name)}</b><span>Week ${off+1} to ${off+W} · ${W} weeks${sv.estimated?' · estimated':''}</span></div></div>
         <div class="sessions" style="--sh:${lv.length*40+12}px">${ses.map(x=>`<span class="bub${x.g===0?' l':x.g>=TLW?' r':''}" style="left:${x.g/TLW*100}%;--lv:${x.lv}">${esc(x.n)}<small>W${Math.max(1,Math.ceil(x.g))}</small></span>`).join('')}</div>
         <div class="rows" style="--w:${TLW}">${Array.from({length:nRows},(_,r)=>`<div class="row">${k.bars.filter(x=>x.row===r).map(x=>`<div class="bar" data-i="${k.bars.indexOf(x)}" style="left:calc(${(x.start+off)/TLW*100}% + 6px);width:calc(${(x.end-x.start)/TLW*100}% - 12px)"><span>${esc(x.name)}</span></div>`).join('')}</div>`).join('')}</div>
       </div>`}).join('')}
@@ -2241,7 +2264,7 @@ function drawTL(w){
 }
 function updateTimeline(){
   const ch=$('#chart'); ch.classList.toggle('static',!pinned()&&tlManual===null);
-  if(!pinned()){ if(tlManual===null){$('#wkNo').textContent='';$('#wkNow').textContent=BLK.map(k=>(k.sv.id==='website'?'Website':k.sv.name)+' '+k.W+' weeks').join(' · ');$$('#chart .bar').forEach(b=>{b.style.setProperty('--p',0);b.classList.remove('done')});return}
+  if(!pinned()){ if(tlManual===null){$('#wkNo').textContent='';$('#wkNow').textContent=BLK.map(k=>k.sv.name+' '+k.W+' weeks').join(' · ');$$('#chart .bar').forEach(b=>{b.style.setProperty('--p',0);b.classList.remove('done')});return}
     drawTL(tlManual);return}
   const r=tlWrap.getBoundingClientRect(),total=tlWrap.offsetHeight-innerHeight; tlManual=null; drawTL(clamp(-r.top/total,0,1)*TLW);
 }
@@ -2252,9 +2275,9 @@ onChange(renderTimeline);
 /* ── case study drawer (details layer) ── */
 const drawer=$('#drawer'); let lastFocus=null;
 function openDrawer(i){const c=P.work.cases[i];lastFocus=document.activeElement;
-  $('#drPanel').innerHTML=`<button class="x" aria-label="Close">×</button><p class="k">${esc(c.sector)}</p><h3 id="drTitle">${esc(c.name)}</h3>
-  <div class="frame"><img src="${c.img}" alt=""></div>
-  <dl class="spec"><dt>Challenge</dt><dd>${t(c.challenge)}</dd><dt>Our solution</dt><dd>${t(c.solution)}</dd><dt>Deliverables</dt><dd>${t(c.deliverables)}</dd><dt>Outcome</dt><dd>${t(c.outcome)}</dd></dl>`;
+  $('#drPanel').innerHTML=`<button class="x" aria-label="Close">×</button><p class="k">${esc(c.tags)}</p><h3 id="drTitle">${esc(c.name)}</h3>
+  ${c.imgs.map(src=>`<div class="frame"><img src="${src}" alt=""></div>`).join('')}
+  <dl class="spec"><dt>Services</dt><dd>${esc(c.tags)}</dd><dt>Outcome</dt><dd>${esc(c.outcome)}</dd></dl>`;
   drawer.classList.add('open');drawer.setAttribute('aria-hidden','false');$('#drPanel .x').focus();$('#drPanel .x').onclick=closeDrawer;}
 function closeDrawer(){drawer.classList.remove('open');drawer.setAttribute('aria-hidden','true');lastFocus&&lastFocus.focus()}
 $$('.case').forEach(b=>b.addEventListener('click',()=>openDrawer(+b.dataset.case)));
@@ -2262,20 +2285,24 @@ drawer.addEventListener('click',e=>{if(e.target===drawer)closeDrawer()});
 
 /* ── approval: an intent-to-proceed message, not a binding signature ── */
 const modal=$('#modal');
-function openModal(){lastFocus=document.activeElement;const p=pricing(),sel=selected();
-  const msg=`Hello Heli Studio,\n\nWe have reviewed the ${P.client.name} proposal (${P.project.version}, ${P.project.date}) and would like to move forward with:\n${sel.map(s=>`- ${s.name}: ${money(s.price)}`).join('\n')}${p.credit?`\n- Package credit: -${money(p.credit)}`:''}\nTotal: ${money(p.total)}\n\nPlease send the agreement and first invoice so we can schedule the kickoff.\n\n${P.client.name}`;
-  $('#mdBox').innerHTML=`<p class="k">Confirm your selection</p><h3 id="mdTitle">Approve proposal</h3>
-   <div>${sel.map(s=>`<div class="sumrow"><span>${esc(s.name)}</span><span class="num">${money(s.price)}</span></div>`).join('')}${p.credit?`<div class="sumrow"><span>Package credit</span><span class="num">-${money(p.credit)}</span></div>`:''}<div class="sumrow"><b>Total</b><b class="num">${money(p.total)}</b></div></div>
+function openModal(mode){lastFocus=document.activeElement;const p=pricing(),sel=selected(),chg=mode==='changes';
+  const ref=`${P.client.name} proposal (${P.project.version}, ${P.project.date})`;
+  const msg=chg?`Hello Heli Studio,\n\nWe have reviewed the ${ref} and would like to request a few changes before we confirm:\n\n- \n\nCurrent selection: ${sel.map(s=>s.name).join(' + ')} · ${money(p.total)}\n\n${P.client.name}`
+    :`Hello Heli Studio,\n\nWe have reviewed the ${ref} and would like to start with:\n${sel.map(s=>`- ${s.name}: ${money(s.price)}`).join('\n')}${p.credit?`\n- Package credit: -${money(p.credit)}`:''}\nTotal: ${money(p.total)}\n\nPlease suggest a time for a call, then send the agreement and first invoice so we can schedule the kickoff.\n\n${P.client.name}`;
+  const subj=chg?`${P.client.name} proposal: change request`:`${P.client.name} proposal: book a call`;
+  $('#mdBox').innerHTML=`<p class="k">${chg?'Tell us what to adjust':'Confirm your selection'}</p><h3 id="mdTitle">${chg?'Request changes':'Start the journey'}</h3>
+   ${chg?'':`<div>${sel.map(s=>`<div class="sumrow"><span>${esc(s.name)}</span><span class="num">${money(s.price)}</span></div>`).join('')}${p.credit?`<div class="sumrow"><span>Package credit</span><span class="num">-${money(p.credit)}</span></div>`:''}<div class="sumrow"><b>Total</b><b class="num">${money(p.total)}</b></div></div>`}
    <label for="apprMsg" class="k">Your message to the studio</label><textarea id="apprMsg">${esc(msg)}</textarea>
-   <div class="acts"><button class="btn" id="mdCopy">Copy message</button><a class="btn ghost" id="mdMail" href="mailto:${P.contact.email}?subject=${encodeURIComponent(P.client.name+' proposal approval')}">Email ${P.contact.email}</a><button class="btn ghost" id="mdClose">Close</button></div>
-   <p class="fine" id="mdFine">This tells us you want to proceed. The agreement and first invoice follow by email; nothing is binding until both are signed. If the email button does nothing, copy the message and send it to ${P.contact.email}.</p>`;
+   <div class="acts"><a class="btn" id="mdMail" href="mailto:${P.contact.email}?subject=${encodeURIComponent(subj)}">${chg?'Send request':'Book a call'}</a><button class="btn ghost" id="mdCopy">Copy message</button><button class="btn ghost" id="mdClose">Close</button></div>
+   <p class="fine" id="mdFine">${chg?'We reply within 1 working day with an updated proposal.':'This tells us you want to proceed. The agreement and first invoice follow by email; nothing is binding until both are signed.'} If the button does nothing, copy the message and send it to ${P.contact.email}.</p>`;
   modal.classList.add('open');modal.setAttribute('aria-hidden','false');$('#mdCopy').focus();
   $('#mdClose').onclick=closeModal;
-  $('#mdMail').href+=`&body=${encodeURIComponent($('#apprMsg').value)}`;
+  $('#mdMail').addEventListener('click',()=>{$('#mdMail').href=`mailto:${P.contact.email}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent($('#apprMsg').value)}`});
   $('#mdCopy').onclick=async()=>{const ta=$('#apprMsg');try{await navigator.clipboard.writeText(ta.value);$('#mdCopy').textContent='Copied'}catch{ta.select();$('#mdCopy').textContent='Selected, press copy'}};
 }
 function closeModal(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');lastFocus&&lastFocus.focus()}
-$('#ctaApprove').addEventListener('click',openModal);
+$('#ctaApprove').addEventListener('click',()=>openModal('start'));
+$('#ctaChanges').addEventListener('click',()=>openModal('changes'));
 modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
 addEventListener('keydown',e=>{if(e.key==='Escape'){if(modal.classList.contains('open'))closeModal();if(drawer.classList.contains('open'))closeDrawer()}});
 
