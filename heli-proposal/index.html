@@ -1623,6 +1623,10 @@ body.on-ink .hb-menu a.on{color:#12110D!important}
 .t-stub.drag{cursor:grabbing}
 .total .t-main,.total:hover .t-main{transform:var(--tear-main,none)!important;transition:none!important}
 .t-stub{position:relative}
+.facts .accent{background:var(--metal)!important;color:#111!important;box-shadow:none!important}
+.facts .accent .k{color:#3a3a38!important}
+.facts>div:not(.accent){background:none!important;padding-left:0;padding-right:0}
+.facts .v small{font-size:.62em!important}
 .more-h{padding:16px 0;font-size:var(--t-small)!important;line-height:1.4!important}
 /* a simple, friendly smiley: gentle float and blink, no spin */
 .smiley.cute svg{animation:none!important}
@@ -1902,7 +1906,7 @@ const PROPOSAL = {
     ['Proposal validity','10 days from the date of this proposal.'],
     ['Sharing the work','If you have any concerns about sharing the work in our portfolio, let us know beforehand.']],
 
-  start:{ earliest:'3 November 2026', status:'Fully available' },
+  start:{ earliest:'25 October 2026', status:'Fully available' },
 
   steps:['Review the proposal','Select the scope that fits','Confirm the proposal','Agreement and first payment','Schedule the kickoff'],
 
@@ -1971,8 +1975,8 @@ M.glance=()=>sec('glance','light','Start','Before you decide',
   head('<span data-bind="decide"></span>','Everything above, in one minute.','Before you decide')+`
   <ul class="glance-rows grow">${P.glance.map(([k,v])=>`<li><p class="k">${k}</p><p>${esc(v)}</p></li>`).join('')}</ul>
   <div class="facts">
-    <div><p class="k">Services</p><p class="v" data-bind="svcCount"></p></div>
-    <div><p class="k">Estimated duration</p><p class="v" data-bind="weeks"></p></div>
+    <div><p class="k">Services</p><p class="v" style="font-size:clamp(20px,1.7vw,30px)" data-bind="svcCount"></p></div>
+    <div><p class="k">Estimated duration</p><p class="v" style="font-size:clamp(20px,1.7vw,30px)" data-bind="weeks"></p></div>
     <div><p class="k">Earliest start</p><p class="v" style="font-size:clamp(20px,1.7vw,30px)">${esc(P.start.earliest)}</p></div>
     <div class="accent"><p class="k">Investment</p><p class="v" data-bind="total"></p></div>
   </div>`);
@@ -2163,11 +2167,11 @@ void(`url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.or
 function bind(){
   const p=pricing(), w=totalWeeks(), sel=selected();
   const set=(k,h)=>$$(`[data-bind="${k}"]`).forEach(el=>el.innerHTML=h);
-  set('svcCount',`${sel.length}<small>${sel.map(shortOf).join(' + ')}</small>`);
+  set('svcCount',sel.map(shortOf).join(' + '));
   set('decide',`${sel.map(shortOf).join(' + ')} for ${esc(P.client.name)}, ready in ${w} weeks for ${money(p.total)}.`);
   set('weeksN',`${w} weeks`);
   set('milestones',P.payment.split.map(([l,f])=>`${Math.round(f*100)}% ${esc(l.toLowerCase())} (${money(Math.round(p.total*f))})`).join(' · '));
-  set('weeks',`${w}<small>weeks${sel.some(s=>s.estimated)?' · est.':''}</small>`);
+  set('weeks',`${w} weeks${sel.some(s=>s.estimated)?' · est.':''}`);
   set('weeksLong',`${w} weeks in total${sel.some(s=>s.estimated)?', some weeks estimated':''}`);
   set('total',money(p.total));
   set('coversShort',sel.map(s=>esc(s.tab||s.name)).join(' + '));
