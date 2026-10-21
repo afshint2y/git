@@ -1996,7 +1996,7 @@ M.scope=()=>sec('scope','light','Explain','Scope & deliverables',
   <div id="scopePanel" class="grow"></div>`);
 
 M.process=()=>sec('process','light','Explain','Process',
-  head('Process','Phases, what each one is for, and where your approval moves us forward.','How will it work')+`
+  head('Process','Switch between tabs to see details.','How will it work')+`
   <div class="tabs" role="tablist" aria-label="Service" id="procTabs">${P.services.map(s=>`<button role="tab" data-svc="${s.id}" aria-selected="false">${esc(s.tab||s.name)}</button>`).join('')}</div>
   <div class="acc grow" id="acc"></div>`);
 
