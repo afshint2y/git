@@ -1635,6 +1635,28 @@ body.on-ink .hb-menu a.on{color:#12110D!important}
 .cta.ghost{background:#fff;border:1px solid var(--line)} .cta.ghost .ar{background:var(--paper);color:var(--ink)}
 @media (max-width:860px){.und,.cases.c-3,.team{grid-template-columns:1fr}}
 
+/* ── footer from heli.studio (dark, glass buttons as in the site's .glass-btn-footer) ── */
+.hs-foot{background:var(--ink);color:#FAF9F6;padding:clamp(72px,10vh,120px) var(--g) calc(clamp(28px,4vh,40px) + env(safe-area-inset-bottom,0px));display:grid;gap:clamp(48px,8vh,96px);border-top:1px solid #242424}
+.hs-foot a{color:inherit;text-decoration:none}
+.hsf-top{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,2fr);gap:clamp(32px,5vw,96px);align-items:start}
+.hsf-lead{display:grid;gap:22px;justify-items:start}
+.hsf-lead h2{font-size:var(--t-h2);font-weight:500;letter-spacing:var(--tight);line-height:1.15;max-width:16ch}
+.hsf-lead h2 span{color:#7A7A7A}
+.glass-btn-footer{position:relative;display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;background:#ffffff0d;font-size:14px;font-weight:500;transition:color .2s,background-color .2s}
+.glass-btn-footer::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;background:linear-gradient(149.44deg,#fffc 7.52%,#0000 51.35%,#fffc 95.17%);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box exclude,linear-gradient(#fff 0 0)}
+.glass-btn-footer:hover{color:#FFF400;background:#ffffff14}
+.hsf-mail{display:flex;flex-wrap:wrap;gap:10px}
+.hsf-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.hsf-cols h3{font-size:12px;font-weight:500!important;letter-spacing:.02em!important;text-transform:uppercase;color:#7A7A7A;margin-bottom:16px}
+.hsf-cols ul{display:grid;gap:10px;font-size:15px}
+.hsf-cols a{display:inline-flex;align-items:center;transition:color .2s}
+.hsf-cols a .mk{display:inline-block;aspect-ratio:3/2;border-radius:999px;background:currentColor;width:0;margin-right:0;transition:width .3s,margin .3s}
+.hsf-cols a:hover{color:#FFF400}.hsf-cols a:hover .mk{width:14px;margin-right:6px}
+.hsf-bot{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center;padding-top:22px;border-top:1px solid #242424;font-size:12px;color:#7A7A7A}
+.hsf-bot .hsf-mark{display:inline-flex;align-items:center;gap:10px;color:#FAF9F6;font-weight:500;font-size:13px}
+@media (max-width:860px){.hsf-top{grid-template-columns:1fr}.hsf-cols{grid-template-columns:1fr 1fr}}
+
 /* yellow back to the flat #FDF451 */
 :root{--lime:#FDF451;--yg:#FDF451}
 .cta,.t-stub,.bt-stub,.sol .k,.sol-head .k,.proj-h span,.ph-body .gate,.facts .accent,.bub,.pkg[aria-pressed="true"] .stub,.bar.done,.hb-menu a.on{box-shadow:none!important}
@@ -1662,6 +1684,36 @@ body.on-ink .hb-menu a.on{color:#12110D!important}
 <nav class="perf-nav" id="perfNav" aria-label="Proposal sections"><span class="tip" id="perfTip"></span></nav>
 
 <main id="app"></main>
+
+<footer class="hs-foot" id="hsFoot">
+  <div class="hsf-top">
+    <div class="hsf-lead">
+      <h2>Questions about this proposal? <span>Write to the studio directly.</span></h2>
+      <div class="hsf-mail">
+        <a class="glass-btn-footer" href="mailto:hi@heli.studio" data-cursor="Email us">hi@heli.studio</a>
+        <button type="button" class="glass-btn-footer copy-mail" data-copy="hi@heli.studio">Copy email</button>
+      </div>
+    </div>
+    <div class="hsf-cols">
+      <div><h3>Studio</h3><ul>
+        <li><a href="https://heli.studio/" target="_blank" rel="noopener"><span class="mk"></span>Home</a></li>
+        <li><a href="https://heli.studio/works" target="_blank" rel="noopener"><span class="mk"></span>Works</a></li>
+        <li><a href="https://heli.studio/about" target="_blank" rel="noopener"><span class="mk"></span>About</a></li></ul></div>
+      <div><h3>Services</h3><ul>
+        <li><a href="https://heli.studio/services/brand-identity" target="_blank" rel="noopener"><span class="mk"></span>Brand Identity</a></li>
+        <li><a href="https://heli.studio/services/product-design" target="_blank" rel="noopener"><span class="mk"></span>Product Design</a></li>
+        <li><a href="https://heli.studio/services/website-development" target="_blank" rel="noopener"><span class="mk"></span>Development</a></li></ul></div>
+      <div><h3>Follow</h3><ul>
+        <li><a href="https://dribbble.com/helistudio" target="_blank" rel="noreferrer"><span class="mk"></span>Dribbble</a></li>
+        <li><a href="https://www.behance.net/helistudio" target="_blank" rel="noreferrer"><span class="mk"></span>Behance</a></li>
+        <li><a href="https://www.linkedin.com/company/helistudio" target="_blank" rel="noreferrer"><span class="mk"></span>LinkedIn</a></li></ul></div>
+    </div>
+  </div>
+  <div class="hsf-bot">
+    <span class="hsf-mark"><svg width="19" height="16" viewbox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15.9201 5.90276H13.797C13.7264 5.90276 13.6563 5.90667 13.5873 5.91337C13.6563 5.90611 13.7252 5.90164 13.7959 5.90164L13.5596 5.9022C13.1764 5.9022 12.9373 5.4923 13.1283 5.1645L13.2414 4.97183C13.2431 4.96848 13.2453 4.96569 13.2476 4.96234L14.3086 3.14628C14.8947 2.14275 14.5471 0.860562 13.5319 0.281455C13.1979 0.0904678 12.8327 0 12.4726 0C11.739 0 11.0251 0.375832 10.6322 1.04876L9.57069 2.86482C9.53621 2.92457 9.50456 2.98545 9.4763 3.04687C9.50456 2.98545 9.53452 2.92513 9.569 2.86538L9.45143 3.0681C9.25981 3.39534 8.78105 3.39534 8.58943 3.0681L8.47186 2.86538V2.86482L7.41033 1.04876C7.01749 0.375832 6.30359 1.48148e-09 5.5699 1.48148e-09C5.20984 1.48148e-09 4.8447 0.0904678 4.51064 0.281455C3.82952 0.669575 3.44911 1.37433 3.44911 2.0992C3.44911 2.45492 3.54068 2.81568 3.73399 3.14628L4.79496 4.96234C4.81304 4.9925 4.8317 5.02265 4.85091 5.05225C4.83113 5.02377 4.81248 4.99417 4.79439 4.96402L4.91309 5.16617C5.10471 5.49342 4.86505 5.90332 4.48238 5.90332L4.2461 5.90276H2.12249C1.53633 5.90276 1.00557 6.13731 0.621767 6.51705C0.237403 6.89623 0 7.42061 0 7.99972C0 8.57883 0.237403 9.10321 0.621767 9.48295C1.00557 9.86213 1.53633 10.0972 2.12249 10.0972H4.24554C4.29924 10.0972 4.35294 10.095 4.40607 10.0911C4.3535 10.0956 4.30037 10.0984 4.24667 10.0984L4.48294 10.0978C4.86561 10.0978 5.10527 10.5077 4.91366 10.8355L4.79552 11.0371C4.79496 11.0371 4.79496 11.0377 4.79496 11.0377L3.73399 12.8537C3.54068 13.1838 3.44911 13.5445 3.44911 13.9002C3.44911 14.6251 3.82952 15.3304 4.51064 15.7185C4.8447 15.909 5.20984 16 5.5699 16C6.30359 16 7.01693 15.6236 7.41033 14.9507L8.47186 13.1346C8.49786 13.0894 8.52273 13.0436 8.54478 12.9978C8.52273 13.0436 8.49956 13.0894 8.47355 13.1341L8.59113 12.9319C8.78218 12.6041 9.2615 12.6041 9.45312 12.9319L9.56448 13.1229C9.56674 13.1268 9.56843 13.1307 9.57069 13.1341C9.57069 13.1346 9.57126 13.1346 9.57126 13.1352L10.6322 14.9512C11.0251 15.6242 11.739 16 12.4726 16C12.8327 16 13.1979 15.9095 13.5319 15.7185C14.213 15.3299 14.594 14.6251 14.594 13.9002C14.594 13.5445 14.5019 13.1843 14.3091 12.8537L13.2476 11.0377C13.2301 11.0081 13.212 10.9785 13.1933 10.95C13.2126 10.9779 13.2306 11.0064 13.2482 11.036L13.1295 10.8338C12.9378 10.5066 13.1775 10.0967 13.5602 10.0967L13.7964 10.0972H15.9201C16.5062 10.0972 17.037 9.86213 17.4208 9.48295C17.8052 9.10321 18.0426 8.57883 18.0426 7.99972C18.0426 7.42061 17.8052 6.89623 17.4208 6.51705C17.037 6.13731 16.5062 5.90276 15.9201 5.90276ZM11.6497 9.99002L11.458 9.98946C11.0816 9.98052 10.6978 10.0704 10.3479 10.2704C9.98897 10.4753 9.7137 10.7685 9.53339 11.1058L9.45312 11.2437C9.2615 11.571 8.78218 11.571 8.59113 11.2437L8.49786 11.0835C8.31699 10.7551 8.04623 10.4703 7.69465 10.2698C7.36116 10.0794 6.99601 9.98946 6.63652 9.98946C6.60713 9.98946 6.5783 9.99002 6.54947 9.99113H6.39346C6.01079 9.99113 5.77113 9.58124 5.96275 9.25399L6.05827 9.09148C6.25441 8.77316 6.36802 8.39957 6.36802 7.99972C6.36802 7.79421 6.33807 7.59541 6.28211 7.40777C6.22615 7.22013 6.14419 7.0431 6.04075 6.88115L5.96218 6.74769C5.77057 6.41988 6.01023 6.00998 6.3929 6.00998L6.58282 6.01054C6.95984 6.01947 7.3442 5.92957 7.69465 5.72964C7.87496 5.62689 8.03436 5.5018 8.17059 5.35995C8.30737 5.21811 8.42099 5.05951 8.51143 4.8903L8.58943 4.75627C8.78105 4.42847 9.25981 4.42847 9.45143 4.75627L9.54582 4.91822C9.72614 5.24547 9.99688 5.52972 10.3479 5.72964C10.682 5.92007 11.046 6.01054 11.406 6.01054C11.4343 6.01054 11.4626 6.00998 11.4903 6.00886H11.6485C12.0312 6.00886 12.2709 6.41876 12.0798 6.74601L11.9831 6.91019C11.7876 7.22795 11.6745 7.60099 11.6745 7.99972C11.6745 8.20467 11.7045 8.40292 11.7604 8.59C11.8158 8.77763 11.8972 8.9541 12.0001 9.11549L12.0804 9.25231C12.272 9.58012 12.0323 9.99002 11.6497 9.99002Z" fill="currentColor"></path></svg>Heli Studio</span>
+    <span id="hsfRef"></span>
+    <span id="hsfCopy"></span>
+  </div>
 
 <div class="drawer" id="drawer" aria-hidden="true"><div class="panel" role="dialog" aria-modal="true" aria-labelledby="drTitle" id="drPanel"></div></div>
 <div class="modal" id="modal" aria-hidden="true"><div class="box" role="dialog" aria-modal="true" aria-labelledby="mdTitle" id="mdBox"></div></div>
@@ -2026,7 +2078,6 @@ M.heli=()=>`<section class="s ink hfoot" id="heli" data-stage="Start" data-label
     <a class="hf-q q3" href="#team"><span class="ic">○</span><span>Who will work on our project?</span><b><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></b></a>
     </div><a class="hf-call" href="mailto:${P.contact.email}?subject=${encodeURIComponent('Call about the '+P.client.name+' proposal')}"><span aria-hidden="true">✦</span>Book a Call</a>
   </div>
-  <div class="hf-bot"><span>© ${YEAR} Heli Studio</span><a href="#cover">Back to top</a></div>
 </section>`;
 
 M.appendix=()=>sec('appendix','light appx','Beyond','Other services',
@@ -2036,6 +2087,9 @@ M.appendix=()=>sec('appendix','light appx','Beyond','Other services',
 const ORDER=['cover','challenge','objectives','perspective','solution','work','scope','process','timeline','team','collab','price','investment','terms','glance','next','appendix','closing','heli'];
 $('#app').innerHTML=ORDER.map(k=>M[k]()).join('');
 $('#cTl').textContent=P.project.title;
+$('#hsfRef').textContent=`${P.client.name} · ${P.project.name} · ${P.project.version}, ${P.project.date}`;
+$('#hsfCopy').textContent=`© ${YEAR} Heli Studio. All rights reserved.`;
+$$('.copy-mail').forEach(b=>b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(b.dataset.copy);b.textContent='Copied'}catch{b.textContent=b.dataset.copy}setTimeout(()=>b.textContent='Copy email',1600)}));
 $$('main > section').forEach((sc,i,a)=>{const e=sc.querySelector('.sf .pg');if(e)e.textContent=`${pad(i+1)} / ${pad(a.length)}`});
 const pathD=$('#lg path').getAttribute('d');
 void(`url("data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 43'><path d='${pathD}'/></svg>`)}")`);
@@ -2347,6 +2401,7 @@ function setCurrent(i){if(i===cur)return;cur=i;dots.forEach((d,j)=>d.classList.t
 let tick=false;
 function onScroll(){if(tick)return;tick=true;requestAnimationFrame(()=>{tick=false;
   const y=innerHeight*.45;let idx=0;secs.forEach((s,i)=>{if(s.getBoundingClientRect().top<=y)idx=i});setCurrent(idx);
+  document.body.classList.toggle('on-ink',$('#hsFoot').getBoundingClientRect().top<=60||secs[idx].classList.contains('ink'));
   const h=document.documentElement.scrollHeight-innerHeight;$('#progress').style.transform=`scaleX(${h>0?scrollY/h:0})`;
   if(!RM)$('#mark').style.transform=`rotate(${scrollY*.12}deg)`;})}
 addEventListener('scroll',onScroll,{passive:true});addEventListener('resize',onScroll);
