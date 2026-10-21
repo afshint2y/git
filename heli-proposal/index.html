@@ -1623,6 +1623,13 @@ body.on-ink .hb-menu a.on{color:#12110D!important}
 .t-stub.drag{cursor:grabbing}
 .total .t-main,.total:hover .t-main{transform:var(--tear-main,none)!important;transition:none!important}
 .t-stub{position:relative}
+/* cover: the wordmark starts exactly on the second meta column line */
+.cover .cv-row{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap);align-items:end;justify-content:stretch}
+.cover .cv-l{grid-column:1;width:100%!important}
+.cover .cv-l .film{width:min(280px,100%)!important}
+.cover .cv-desc{max-width:none!important}
+.cover h1{grid-column:2/-1;justify-self:start;margin-left:-.055em}
+@media (max-width:760px){.cover .cv-row{grid-template-columns:1fr}.cover .cv-l,.cover h1{grid-column:1}}
 /* how we start: big title, pill-numbered steps, start card and two call-to-action buttons, validity line */
 .hnx{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-areas:"s r" "c c" "f f";gap:clamp(24px,3vw,56px) clamp(28px,4vw,72px);align-content:start}
 .hnx-steps{grid-area:s;align-self:start;border-top:1px solid var(--line)}
