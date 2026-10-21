@@ -2151,7 +2151,7 @@ M.heli=()=>`<section class="s ink hfoot" id="heli" data-stage="Start" data-label
 
 M.appendix=()=>sec('appendix','light appx','Beyond','Other services',
   head('Other services',`What else Heli Studio can do for ${esc(P.client.name)}, beyond this project.`,'Beyond this project')+`
-  <div class="caps grow">${P.capabilities.map(([h,l],i)=>`<div class="cap"><div class="cap-h"><span class="num">${pad(i+1)}</span><h4>${esc(h)}</h4><em>${l.length} services</em></div><ul>${l.map(x=>`<li><span>${esc(x)}</span></li>`).join('')}</ul></div>`).join('')}</div>`);
+  <div class="caps grow">${P.capabilities.map(([h,l],i)=>`<div class="cap"><div class="cap-h"><h4>${esc(h)}</h4><em>${l.length} services</em></div><ul>${l.map(x=>`<li><span>${esc(x)}</span></li>`).join('')}</ul></div>`).join('')}</div>`);
 
 const ORDER=['cover','challenge','objectives','perspective','solution','work','scope','process','timeline','team','collab','price','investment','terms','glance','next','appendix','closing','heli'];
 $('#app').innerHTML=ORDER.map(k=>M[k]()).join('');
