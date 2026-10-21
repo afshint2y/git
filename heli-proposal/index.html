@@ -1623,6 +1623,35 @@ body.on-ink .hb-menu a.on{color:#12110D!important}
 .t-stub.drag{cursor:grabbing}
 .total .t-main,.total:hover .t-main{transform:var(--tear-main,none)!important;transition:none!important}
 .t-stub{position:relative}
+.timeline-hint{display:none;font-size:12px;color:var(--mute);margin-top:-12px}
+/* ── phone layout fixes ── */
+@media (max-width:760px){
+  .hb-mail,.hb-soc{display:none!important}
+  .obj li{grid-template-columns:28px minmax(0,1fr)!important;gap:6px 12px!important}
+  .obj li h3,.obj li p{grid-column:2!important}
+  .obj .no{display:none!important}
+  .tl.pin{height:auto!important}
+  .tl.pin .stick{position:static!important;min-height:0!important}
+  .hf-call{position:relative!important;left:auto!important;bottom:auto!important;transform:none!important;margin:16px auto 0;display:flex;width:max-content}
+  .hf-stage{display:flex;flex-direction:column;align-items:center}
+  .hf-fig{width:100%}
+  .hf-ai{width:100%;height:auto!important}
+  .hf-q.q1{position:absolute!important;left:56%!important;right:-6px!important;top:1.5%!important;margin:0!important;white-space:normal!important;min-width:0!important;padding:10px 10px 10px 14px!important;gap:8px!important;font-size:13px!important;line-height:1.3!important;box-shadow:0 0 0 4px #000}
+  .hf-q.q1 .ic{display:none!important}
+  .hfoot{overflow-x:clip}
+  .hf-q.q1 b{width:34px!important;height:34px!important;margin-left:4px!important}
+  .timeline-hint{display:block!important}
+  /* price ticket: one simple card */
+  .tk-l .tk-skin{padding:28px 24px!important;min-height:0!important}
+  .tk-cl{max-width:none!important;min-height:0!important;gap:28px!important}
+  .tk-frame{display:none!important}
+  .bt-top .amt,.bigticket .tk-skin .amt{font-size:clamp(48px,15vw,72px)!important}
+  .tk-r{position:relative!important;inset:auto!important;margin-top:10px}
+  .tk-r .tk-skin{min-height:0!important;padding:0!important}
+  .tk-cr{position:relative!important;inset:auto!important;padding:24px!important;gap:10px!important}
+  .tk-cr .k,.tk-cr .cv{width:auto!important}
+  .stages .st-h{flex-wrap:wrap;gap:6px 12px}
+}
 /* cover: the wordmark starts exactly on the second meta column line */
 .cover .cv-row{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--gap);align-items:end;justify-content:stretch}
 .cover .cv-l{grid-column:1;width:100%!important}
@@ -2006,6 +2035,7 @@ M.process=()=>sec('process','light','Explain','Process',
 
 M.timeline=()=>`<section class="tl light pin" id="timeline" data-stage="Explain" data-label="Timeline"><div class="stick">
   ${head('Timeline','Sessions with you are marked above each week. Start and delivery dates are confirmed at kickoff.','How long will it take')}
+  <p class="timeline-hint">Swipe the chart to see all weeks →</p>
   <div class="chart-wrap"><div class="chart" id="chart"></div></div>
   <div class="tl-foot"><p class="now num"><b id="wkNo"></b><span id="wkNow"></span></p><p class="dates" data-bind="weeksLong"></p></div>
   ${foot('Explain','Timeline')}
