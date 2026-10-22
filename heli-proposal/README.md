@@ -41,7 +41,7 @@ No external requests except the `mailto:` links and the outbound links to heli.s
 | Key | What it drives |
 | --- | --- |
 | `client`, `project` | Cover, footers, ticket serials, email subjects. `project.version` is the reference number. |
-| `currency` | Prefix for every amount (`€`). |
+| `currency` | Prefix for every amount (`$`). |
 | `services[]` | Investment tickets, scope tabs, process tabs, timeline rows. `price`, `weeks`, `ticket` (ticket bullet list), `activities` and `deliverables` (scope), `spec` (scope specifics). `after: {id, week}` starts this service at that week when the other service is also selected. |
 | `bundle` | Package credit applied when all `bundle.ids` are selected (`credit`, `note`, `sequence`). |
 | `process.<serviceId>[]` | Phases: `start`/`end` are weeks inside the service (0-based), `glyph` picks the animated icon. |
@@ -51,7 +51,7 @@ No external requests except the `mailto:` links and the outbound links to heli.s
 | `work.cases[]` | Case cards and drawer: `name`, `tags`, `outcome`, `imgs` (first image is the card cover). |
 | `terms`, `steps`, `start`, `contact`, `capabilities` | Terms grid, How we start, Earliest start, Contact, Other services. |
 
-Current numbers: Visual Identity €5,000 (6 weeks) + Packaging Design €3,000 (5 weeks, starts after week 5) − €2,000 package credit = **€6,000, 10 weeks, 7 sessions**. Paid 40/30/30 (€2,400 · €1,800 · €1,800).
+Current numbers: Visual Identity $5,000 (6 weeks) + Packaging Design $3,000 (5 weeks, starts after week 5) − $2,000 package credit = **$6,000, 10 weeks, 7 sessions**. Paid 40/30/30 ($2,400 · $1,800 · $1,800).
 
 ## Checked
 

@@ -1605,7 +1605,8 @@ body.on-ink .hb-menu a.on{color:#12110D!important}
 
 /* Pocky instance: understanding columns, approach tags, three cases, team line, second CTA */
 .ch2:has(.und){grid-template-columns:1fr;gap:clamp(28px,4vw,64px)}
-.ch2:has(.und) .lead{max-width:22ch}
+.ch2:has(.und) .lead{max-width:none!important;white-space:nowrap}
+@media (max-width:760px){.ch2:has(.und) .lead{white-space:normal}}
 .und{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
 .und-h{font-size:var(--t-h3);letter-spacing:-.02em;line-height:1.3;margin:10px 0 14px;max-width:24ch}
 .und-l li{font-size:var(--t-small);padding:10px 0;border-top:1px solid var(--line)}
@@ -1638,6 +1639,7 @@ body.on-ink .hb-menu a.on{color:#12110D!important}
   .pkg:hover,.hnx-cta:hover,.case:hover .frame img,.hf-q:hover{transform:none!important}
   .hnx-cta:hover i{transform:none}
 }
+.hfoot{overflow-x:clip}
 /* bottom bar on every screen: socials left, email centre, page number right (the header keeps only the menu pill) */
 .hb-soc,.hb-mail{visibility:hidden!important}
 .m-bar{position:fixed;left:0;right:0;bottom:0;z-index:56;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;
@@ -1699,14 +1701,16 @@ body.on-ink .mb-pg{color:#fff}
 .cover h1{grid-column:2/-1;justify-self:start;margin-left:-.055em}
 @media (max-width:760px){.cover .cv-row{grid-template-columns:1fr}.cover .cv-l,.cover h1{grid-column:1}}
 /* how we start: big title, pill-numbered steps, start card and two call-to-action buttons, validity line */
-.hnx{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-areas:"s r" "c c" "f f";gap:clamp(24px,3vw,56px) clamp(28px,4vw,72px);align-content:start}
+.hnx{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-areas:"s r" "s c" "f f";grid-template-rows:auto 1fr auto;gap:clamp(24px,3vw,56px) clamp(28px,4vw,72px);align-content:start}
 .hnx-steps{grid-area:s;align-self:start;border-top:1px solid var(--line)}
 .hnx-steps li{display:grid;grid-template-columns:2.4em minmax(0,1fr);align-items:baseline;gap:12px;padding:clamp(16px,2.2vh,24px) 0;border-bottom:1px solid var(--line);font-size:var(--t-h3);letter-spacing:-.015em}
 .hnx-steps li:last-child{border-bottom:0}
 .hnx-no{font-size:13px;color:var(--mute)}
 .hnx-r{grid-area:r;display:flex;flex-direction:column;gap:12px}
-.hnx-r .hnx-start{flex:1;grid-template-rows:1fr auto auto}
-.hnx-ctas{grid-area:c;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.hnx-r .hnx-start{grid-template-rows:auto auto auto}
+.hnx-ctas{grid-area:c;display:grid;grid-template-columns:1fr;gap:12px;align-content:start}
+.hnx{row-gap:12px!important}
+.hnx-foot{margin-top:clamp(12px,2vw,44px)}
 .hnx-start{background:#F7F7F7;border-radius:24px;padding:clamp(22px,2.2vw,34px) clamp(24px,2.4vw,40px);display:grid;gap:8px}
 .hnx-date{font-size:var(--hs-h2);font-weight:500;letter-spacing:-.04em;line-height:1.4}
 .hnx-avail{display:flex;align-items:center;gap:10px;font-size:var(--t-small);color:var(--text-2)}
@@ -1727,7 +1731,7 @@ body.on-ink .mb-pg{color:#fff}
 .hnx-foot a{color:var(--ink);text-decoration:none;font-weight:500}
 .hnx-foot a:hover{text-decoration:underline}
 .hnx-foot span{color:var(--text-2)}
-@media (max-width:860px){.hnx{grid-template-columns:1fr;grid-template-areas:"s" "r" "c" "f"}.hnx-ctas{grid-template-columns:1fr}}
+@media (max-width:860px){.hnx{grid-template-columns:1fr;grid-template-areas:"s" "r" "c" "f";grid-template-rows:none}.hnx-steps{margin-bottom:12px}.hnx-ctas{grid-template-columns:1fr}}
 .facts>div:not(.accent){background:none!important;padding-left:0;padding-right:0}
 .facts .v small{font-size:.62em!important}
 .more-h{padding:16px 0;font-size:var(--t-small)!important;line-height:1.4!important}
@@ -1849,7 +1853,7 @@ const PROPOSAL = {
   project:{ title:'A proposal for Pocky', name:'Visual Identity & Packaging', deck:'Project Proposal', date:'21 October 2026', version:'HS-2026-042',
     intro:'A visual identity and packaging system for Pocky, made for a younger, adult Scandinavian audience and ready for production.',
     film:'assets/horse.mp4', poster:'assets/horse-poster.jpg' },
-  currency:'€',
+  currency:'$',
 
   glance:[
     ['The project','Identity and packaging for Pocky\'s new tobacco-free range.'],
@@ -1903,7 +1907,7 @@ const PROPOSAL = {
             ['Final file formats','Print-ready PDF with bleed and outlined type, plus source AI files'],['Not included','New dielines, structural design, printing and production costs']]}],
 
   bundle:{ ids:['identity','packaging'], credit:2000,
-    note:'When both services are selected, a €2,000 package credit applies to the total project cost.',
+    note:'When both services are selected, a $2,000 package credit applies to the total project cost.',
     sequence:'Packaging starts at the end of week 5, once the identity is approved, so print-ready files arrive in week 10, not week 11.'},
 
   /* process modules: weeks are positions inside each service (0-based); `after` shifts them on the shared timeline */
@@ -1957,7 +1961,7 @@ const PROPOSAL = {
 
   steps:['Review the proposal','Select the scope that fits','Confirm the proposal','Agreement and first payment','Schedule the kickoff'],
 
-  contact:{ person:'Hadis Khabbaz · Account manager', email:'hi@heli.studio', site:'https://heli.studio/', behance:'https://www.behance.net/helistudio', linkedin:'https://www.linkedin.com/company/helistudio', dribbble:'https://dribbble.com/piqostudio' },
+  contact:{ bookCall:'https://heli.studio/#footer', person:'Hadis Khabbaz · Account manager', email:'hi@heli.studio', site:'https://heli.studio/', behance:'https://www.behance.net/helistudio', linkedin:'https://www.linkedin.com/company/helistudio', dribbble:'https://dribbble.com/piqostudio' },
 
   work:{
     cases:[
@@ -2161,7 +2165,7 @@ M.next=()=>sec('next','light','Start','Next steps',
       <button class="hnx-cta go" id="ctaApprove"><span><b>Start the journey</b><em>Book your kickoff call · <span data-bind="ctaSel"></span></em></span><i aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></i></button>
       <button class="hnx-cta" id="ctaChanges"><span><b>Request changes</b><em>Pick what to adjust, we'll take it from there</em></span><i aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></i></button>
     </div>
-    <div class="hnx-foot"><a href="#terms">Validity &amp; terms</a><span>Valid until ${esc(String(P.payment.validity).split(',')[0])} · ${esc(P.project.version)}</span></div>
+    <div class="hnx-foot"><a href="#terms">Validity &amp; terms</a><span>Valid until ${esc(String(P.payment.validity).split(',')[0])}</span></div>
   </div>`);
 
 M.closing=()=>sec('closing','light ink closing','Start','Contact',`
@@ -2471,7 +2475,7 @@ function openModal(mode){lastFocus=document.activeElement;const p=pricing(),sel=
   $('#mdCopy').onclick=async()=>{const ta=$('#apprMsg');try{await navigator.clipboard.writeText(ta.value);$('#mdCopy').textContent='Copied'}catch{ta.select();$('#mdCopy').textContent='Selected, press copy'}};
 }
 function closeModal(){modal.classList.remove('open');modal.setAttribute('aria-hidden','true');lastFocus&&lastFocus.focus()}
-$('#ctaApprove').addEventListener('click',()=>openModal('start'));
+$('#ctaApprove').addEventListener('click',()=>window.open(P.contact.bookCall,'_blank','noopener'));
 $('#ctaChanges').addEventListener('click',()=>openModal('changes'));
 modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
 addEventListener('keydown',e=>{if(e.key==='Escape'){if(modal.classList.contains('open'))closeModal();if(drawer.classList.contains('open'))closeDrawer()}});
