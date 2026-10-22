@@ -1760,8 +1760,8 @@ body.on-ink .mb-pg{color:#fff}
 .pay-ms{border-top:0!important}
 .pay-ms .more-h{padding:0 0 14px}
 .ms{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px clamp(24px,3vw,56px)}
-.ms li{display:grid;grid-template-columns:2em 1fr;align-items:baseline;gap:6px 8px;font-size:var(--t-small)}
-.ms li b{grid-column:2;font-size:var(--t-h3);letter-spacing:-.02em}
+.ms li{display:grid;grid-template-columns:1fr;align-items:baseline;gap:6px;font-size:var(--t-small)}
+.ms li b{font-size:var(--t-h3);letter-spacing:-.02em}
 .ms li span{color:var(--text-2)}
 .ms em{font-style:normal;font-size:var(--t-meta);color:var(--mute)}
 .ms b{font-weight:500}
@@ -2252,7 +2252,7 @@ function bind(){
   set('svcCount',sel.map(shortOf).join(' + '));
   set('decide',`${sel.map(shortOf).join(' + ')} for ${esc(P.client.name)}, ready in ${w} weeks for ${money(p.total)}.`);
   set('weeksN',`${w} weeks`);
-  set('msList',P.payment.split.map(([l,f],i)=>`<li><em>${pad(i+1)}</em><span>${Math.round(f*100)}% ${esc(l.toLowerCase())}</span><b>${money(Math.round(p.total*f))}</b></li>`).join('')+`<li class="ms-inv"><em></em><span>Invoices</span><b>Due within 7 days</b></li>`);
+  set('msList',P.payment.split.map(([l,f],i)=>`<li><span>${Math.round(f*100)}% ${esc(l.toLowerCase())}</span><b>${money(Math.round(p.total*f))}</b></li>`).join('')+`<li class="ms-inv"><span>Invoices</span><b>Due within 7 days</b></li>`);
   set('milestones',P.payment.split.map(([l,f])=>`${Math.round(f*100)}% ${esc(l.toLowerCase())} (${money(Math.round(p.total*f))})`).join(' · '));
   set('weeks',`${w} weeks${sel.some(s=>s.estimated)?' · est.':''}`);
   set('weeksLong',`${w} weeks in total${sel.some(s=>s.estimated)?', some weeks estimated':''}`);
