@@ -1757,12 +1757,14 @@ body.on-ink .mb-pg{color:#fff}
 #investment .more .spec dt,#investment .more .spec dd{border-top:0!important;padding-top:0!important}
 .pay-ms{border-top:0!important}
 .pay-ms .more-h{padding:0 0 14px}
-.ms{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px clamp(28px,4vw,72px)}
-.ms li{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:12px;font-size:var(--t-small)}
+.ms{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px clamp(24px,3vw,56px)}
+.ms li{display:grid;grid-template-columns:2em 1fr;align-items:baseline;gap:6px 8px;font-size:var(--t-small)}
+.ms li b{grid-column:2;font-size:var(--t-h3);letter-spacing:-.02em}
+.ms li span{color:var(--text-2)}
 .ms em{font-style:normal;font-size:var(--t-meta);color:var(--mute)}
 .ms b{font-weight:500}
 .ms-note{margin-top:12px;font-size:var(--t-small);color:var(--text-2)}
-@media (max-width:760px){.ms{grid-template-columns:1fr}}
+@media (max-width:760px){.ms{grid-template-columns:1fr 1fr}}
 .collab li:last-child{border-bottom:0}
 .cadence .rule{border-top:0!important;padding-top:0!important}
 #team{min-height:100svh!important;padding-top:var(--pad-top)!important}
@@ -2165,7 +2167,7 @@ M.investment=()=>sec('investment','light','Invest','Investment',
     </aside>
   </div>
   <div>
-    <div class="more pay-ms"><h3 class="more-h">Payment milestones</h3><ol class="ms" data-bind="msList"></ol><p class="ms-note">Invoices are due within 7 days.</p></div>
+    <div class="more pay-ms"><h3 class="more-h">Payment milestones</h3><ol class="ms" data-bind="msList"></ol></div>
   </div>`);
 
 M.terms=()=>sec('terms','light','Invest','Terms',
@@ -2175,8 +2177,8 @@ M.terms=()=>sec('terms','light','Invest','Terms',
   </div>
   <p class="nac"><span>This is a proposal, not a contract.</span> <span class="smiley doodle cute" id="smiley" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" stroke-linecap="round" stroke-linejoin="round">
       
-      <circle cx="18" cy="72" r="11" fill="#F7B3B0"/><circle cx="102" cy="72" r="11" fill="#F7B3B0"/>
-      <g class="sm-eyes"><ellipse class="sm-eye" cx="38" cy="42" rx="10" ry="13" fill="#131313"/><ellipse class="sm-eye" cx="82" cy="42" rx="10" ry="13" fill="#131313"/></g>
+      
+      <g class="sm-eyes"><ellipse class="sm-eye" cx="40" cy="44" rx="7" ry="9" fill="#131313"/><ellipse class="sm-eye" cx="80" cy="44" rx="7" ry="9" fill="#131313"/></g>
       <path class="sm-mouth" d="M34 76c14 18 38 18 52 0" stroke="#131313" stroke-width="10"/></svg></span> <span>The agreement follows once you confirm.</span></p>`);
 
 M.next=()=>sec('next','light','Start','Next steps',
@@ -2246,7 +2248,7 @@ function bind(){
   set('svcCount',sel.map(shortOf).join(' + '));
   set('decide',`${sel.map(shortOf).join(' + ')} for ${esc(P.client.name)}, ready in ${w} weeks for ${money(p.total)}.`);
   set('weeksN',`${w} weeks`);
-  set('msList',P.payment.split.map(([l,f],i)=>`<li><em>${pad(i+1)}</em><span>${Math.round(f*100)}% ${esc(l.toLowerCase())}</span><b>${money(Math.round(p.total*f))}</b></li>`).join(''));
+  set('msList',P.payment.split.map(([l,f],i)=>`<li><em>${pad(i+1)}</em><span>${Math.round(f*100)}% ${esc(l.toLowerCase())}</span><b>${money(Math.round(p.total*f))}</b></li>`).join('')+`<li class="ms-inv"><em></em><span>Invoices</span><b>Due within 7 days</b></li>`);
   set('milestones',P.payment.split.map(([l,f])=>`${Math.round(f*100)}% ${esc(l.toLowerCase())} (${money(Math.round(p.total*f))})`).join(' · '));
   set('weeks',`${w} weeks${sel.some(s=>s.estimated)?' · est.':''}`);
   set('weeksLong',`${w} weeks in total${sel.some(s=>s.estimated)?', some weeks estimated':''}`);
