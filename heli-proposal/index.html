@@ -958,6 +958,20 @@ h1,h2,h3,.lead,.nx-t{text-transform:none!important;font-weight:450!important;let
 @media (max-width:900px){.terms-wrap{grid-template-columns:1fr}.terms-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.terms-grid{grid-template-columns:1fr}}
 .terms-wrap{grid-template-columns:1fr}
+/* timeline: week lines run the full height of each lane, from the week header down */
+.tl-g .tl-block{background:repeating-linear-gradient(90deg,transparent 0 calc(100% / var(--w) - 1px),var(--line) calc(100% / var(--w) - 1px) calc(100% / var(--w)))}
+.tl-g .rows{background:none!important}
+.tl-g .span-lab{background:#fff;padding-right:8px}
+/* no rule above the first item of the solution list and the understanding columns */
+.sol li:first-child{border-top:0!important}
+.und .rule{border-top:0!important;padding-top:0!important}
+/* team: no rule above the first row (3 columns on desktop) */
+.team li:nth-child(-n+3){border-top:0}
+@media (max-width:860px){.team li:nth-child(2),.team li:nth-child(3){border-top:1px solid var(--line)}}
+/* no rule above the first row of terms (3 columns, 2 on tablets, 1 on phones) */
+.term:nth-child(-n+3){border-top:0}
+@media (max-width:900px){.term:nth-child(3){border-top:1px solid var(--line)}}
+@media (max-width:560px){.term:nth-child(2){border-top:1px solid var(--line)}}
 .nac{display:flex;align-items:center;gap:12px;font-size:var(--t-h3);letter-spacing:-.02em;color:var(--ink)}
 .nac .smiley{width:1.6em;height:1.6em;aspect-ratio:1;filter:drop-shadow(0 3px 5px rgba(0,0,0,.12));flex:none}
 
@@ -1701,15 +1715,15 @@ body.on-ink .mb-pg{color:#fff}
 .cover h1{grid-column:2/-1;justify-self:start;margin-left:-.055em}
 @media (max-width:760px){.cover .cv-row{grid-template-columns:1fr}.cover .cv-l,.cover h1{grid-column:1}}
 /* how we start: big title, pill-numbered steps, start card and two call-to-action buttons, validity line */
-.hnx{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-areas:"s r" "s c" "f f";grid-template-rows:auto 1fr auto;gap:clamp(24px,3vw,56px) clamp(28px,4vw,72px);align-content:start}
-.hnx-steps{grid-area:s;align-self:start;border-top:1px solid var(--line)}
+.hnx{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-areas:"s r" "c c" "f f";gap:clamp(24px,3vw,56px) clamp(28px,4vw,72px);align-content:start}
+.hnx-steps{grid-area:s;align-self:start}
 .hnx-steps li{display:grid;grid-template-columns:2.4em minmax(0,1fr);align-items:baseline;gap:12px;padding:clamp(16px,2.2vh,24px) 0;border-bottom:1px solid var(--line);font-size:var(--t-h3);letter-spacing:-.015em}
 .hnx-steps li:last-child{border-bottom:0}
 .hnx-no{font-size:13px;color:var(--mute)}
 .hnx-r{grid-area:r;display:flex;flex-direction:column;gap:12px}
-.hnx-r .hnx-start{grid-template-rows:auto auto auto}
-.hnx-ctas{grid-area:c;display:grid;grid-template-columns:1fr;gap:12px;align-content:start}
-.hnx{row-gap:12px!important}
+.hnx-r .hnx-start{flex:1;grid-template-rows:1fr auto auto}
+.hnx-ctas{grid-area:c;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-content:start}
+.hnx{row-gap:clamp(20px,2.4vw,40px)!important}
 .hnx-foot{margin-top:clamp(12px,2vw,44px)}
 .hnx-start{background:#F7F7F7;border-radius:24px;padding:clamp(22px,2.2vw,34px) clamp(24px,2.4vw,40px);display:grid;gap:8px}
 .hnx-date{font-size:var(--hs-h2);font-weight:500;letter-spacing:-.04em;line-height:1.4}
@@ -1727,7 +1741,7 @@ body.on-ink .mb-pg{color:#fff}
 .hnx-cta i svg{width:38%;fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .hnx-cta.go i svg{stroke:#fff}
 .hnx-cta:hover i{transform:rotate(45deg)}
-.hnx-foot{grid-area:f;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;padding-top:clamp(18px,2.4vh,28px);border-top:1px solid var(--line);font-size:var(--t-small)}
+.hnx-foot{grid-area:f;display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;font-size:var(--t-small)}
 .hnx-foot a{color:var(--ink);text-decoration:none;font-weight:500}
 .hnx-foot a:hover{text-decoration:underline}
 .hnx-foot span{color:var(--text-2)}
@@ -1741,6 +1755,17 @@ body.on-ink .mb-pg{color:#fff}
 .nac .smiley.cute{width:1.25em;height:1.25em;transform:none!important}
 @media (prefers-reduced-motion:reduce){.smiley.cute svg{animation:none!important}}
 #investment .more .spec dt,#investment .more .spec dd{border-top:0!important;padding-top:0!important}
+.pay-ms{border-top:0!important}
+.pay-ms .more-h{padding:0 0 14px}
+.ms{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ms li{display:grid;grid-template-columns:auto 1fr auto;align-items:baseline;gap:12px;background:var(--fill,#f6f6f4);border-radius:16px;padding:16px 18px;font-size:var(--t-small)}
+.ms em{font-style:normal;font-size:var(--t-meta);color:var(--mute)}
+.ms b{font-weight:500}
+.ms-note{margin-top:12px;font-size:var(--t-small);color:var(--text-2)}
+@media (max-width:760px){.ms{grid-template-columns:1fr}}
+.collab li:last-child{border-bottom:0}
+.cadence .rule{border-top:0!important;padding-top:0!important}
+#team{min-height:100svh!important;padding-top:var(--pad-top)!important}
 .t-hint{position:absolute;left:clamp(18px,2vw,28px);top:24px;font-size:12px;font-weight:500;text-transform:uppercase;color:#5E5E5A;opacity:0;transition:opacity .3s;pointer-events:none}
 .total:hover .t-hint{opacity:1}
 .t-stub s,.t-stub del{color:#5E5E5A!important}
@@ -2140,7 +2165,7 @@ M.investment=()=>sec('investment','light','Invest','Investment',
     </aside>
   </div>
   <div>
-    <div class="more"><h3 class="more-h">Payment milestones</h3><div class="inner"><dl class="spec"><dt>Schedule</dt><dd><span data-bind="milestones"></span>. Invoices are due within 7 days.</dd></dl></div></div>
+    <div class="more pay-ms"><h3 class="more-h">Payment milestones</h3><ol class="ms" data-bind="msList"></ol><p class="ms-note">Invoices are due within 7 days.</p></div>
   </div>`);
 
 M.terms=()=>sec('terms','light','Invest','Terms',
@@ -2149,7 +2174,7 @@ M.terms=()=>sec('terms','light','Invest','Terms',
     <div class="terms-grid">${P.terms.map(([h,v],i)=>`<div class="term"><p class="tn num">${pad(i+1)}</p><h3>${esc(h)}</h3><p class="tv">${t(v)}</p></div>`).join('')}</div>
   </div>
   <p class="nac"><span>This is a proposal, not a contract.</span> <span class="smiley doodle cute" id="smiley" aria-hidden="true"><svg viewBox="0 0 120 120" fill="none" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="60" cy="60" r="52" stroke="#131313" stroke-width="5"/>
+      
       <circle cx="32" cy="70" r="8" fill="#F7B3B0" opacity=".7"/><circle cx="88" cy="70" r="8" fill="#F7B3B0" opacity=".7"/>
       <g class="sm-eyes"><ellipse class="sm-eye" cx="44" cy="54" rx="5.5" ry="7" fill="#131313"/><ellipse class="sm-eye" cx="76" cy="54" rx="5.5" ry="7" fill="#131313"/></g>
       <path class="sm-mouth" d="M50 74c5 5 15 5 20 0" stroke="#131313" stroke-width="5"/></svg></span> <span>The agreement follows once you confirm.</span></p>`);
@@ -2221,6 +2246,7 @@ function bind(){
   set('svcCount',sel.map(shortOf).join(' + '));
   set('decide',`${sel.map(shortOf).join(' + ')} for ${esc(P.client.name)}, ready in ${w} weeks for ${money(p.total)}.`);
   set('weeksN',`${w} weeks`);
+  set('msList',P.payment.split.map(([l,f],i)=>`<li><em>${pad(i+1)}</em><span>${Math.round(f*100)}% ${esc(l.toLowerCase())}</span><b>${money(Math.round(p.total*f))}</b></li>`).join(''));
   set('milestones',P.payment.split.map(([l,f])=>`${Math.round(f*100)}% ${esc(l.toLowerCase())} (${money(Math.round(p.total*f))})`).join(' · '));
   set('weeks',`${w} weeks${sel.some(s=>s.estimated)?' · est.':''}`);
   set('weeksLong',`${w} weeks in total${sel.some(s=>s.estimated)?', some weeks estimated':''}`);
@@ -2409,7 +2435,7 @@ function renderTimeline(){
   BLK=selected().map(sv=>{const cfg=P.timeline[sv.id];return{sv,cfg,off:offOf(sv.id),W:cfg.weeks,bars:cfg.bars.map(([n,a,b,r])=>({name:n,start:a,end:b,row:r}))}});
   TLW=Math.max(...BLK.map(k=>k.off+k.W));
   const wkPx=($('#chart').clientWidth||1200)/TLW, need=Math.ceil(240/wkPx*10)/10;
-  $('#chart').innerHTML=`<div class="grid-box tl-g">
+  $('#chart').innerHTML=`<div class="grid-box tl-g" style="--w:${TLW}">
     <div class="wk-head" style="grid-template-columns:repeat(${TLW},minmax(0,1fr))">${Array.from({length:TLW},(_,i)=>`<button type="button" data-w="${i}">W${i+1}</button>`).join('')}</div>
     ${BLK.map((k,bi)=>{
       const {sv,cfg,off,W}=k, ses=cfg.sessions.filter(([n,w])=>!(off&&w===0&&n.startsWith('Kick'))).map(([n,w])=>({n,w,g:w+off})), lv=[];
@@ -2417,7 +2443,7 @@ function renderTimeline(){
       const nRows=Math.max(...k.bars.map(x=>x.row))+1, L=off/TLW*100, Wp=W/TLW*100;
       return `<div class="tl-block lane" data-b="${bi}">
         <div class="span-row"><div class="span-lab" style="left:${L}%;width:${Wp}%"><b>${esc(sv.tab||sv.name)}</b><span>Week ${off+1} to ${off+W} · ${W} weeks${sv.estimated?' · estimated':''}</span></div></div>
-        <div class="sessions" style="--sh:${lv.length*40+12}px">${ses.map(x=>`<span class="bub${x.g===0?' l':x.g>=TLW?' r':''}" style="left:${x.g/TLW*100}%;--lv:${x.lv}">${esc(x.n)}<small>W${Math.max(1,Math.ceil(x.g))}</small></span>`).join('')}</div>
+        <div class="sessions" style="--sh:${lv.length*40+12}px">${ses.map(x=>`<span class="bub${x.g===0?' l':x.g>=TLW?' r':''}" style="left:${x.g/TLW*100}%;--lv:${x.lv}">${esc(x.n)}</span>`).join('')}</div>
         <div class="rows" style="--w:${TLW}">${Array.from({length:nRows},(_,r)=>`<div class="row">${k.bars.filter(x=>x.row===r).map(x=>`<div class="bar" data-i="${k.bars.indexOf(x)}" style="left:calc(${(x.start+off)/TLW*100}% + 6px);width:calc(${(x.end-x.start)/TLW*100}% - 12px)"><span>${esc(x.name)}</span></div>`).join('')}</div>`).join('')}</div>
       </div>`}).join('')}
     <div class="ph-layer"><span class="playhead"></span></div></div>`;
