@@ -1638,6 +1638,22 @@ body.on-ink .hb-menu a.on{color:#12110D!important}
   .pkg:hover,.hnx-cta:hover,.case:hover .frame img,.hf-q:hover{transform:none!important}
   .hnx-cta:hover i{transform:none}
 }
+/* phone bottom bar: socials left, email centre, page number right */
+.m-bar{display:none}
+@media (max-width:760px){
+  .m-bar{position:fixed;left:0;right:0;bottom:0;z-index:56;display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:linear-gradient(0deg,rgba(253,253,252,.97) 55%,rgba(253,253,252,0));font-size:12px;color:#7C7C7C}
+  body.on-ink .m-bar{background:linear-gradient(0deg,rgba(0,0,0,.92) 55%,rgba(0,0,0,0));color:#BDBDBD}
+  .m-bar a{color:inherit;text-decoration:none}
+  .mb-soc{display:flex;align-items:center;gap:14px}
+  .mb-soc a{display:inline-flex;align-items:center;min-width:24px;min-height:32px}
+  .mb-soc svg,.mb-mail svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+  .mb-soc .be{font-weight:700;font-size:16px;letter-spacing:-.04em;line-height:1}
+  .mb-mail{display:inline-flex;align-items:center;gap:6px;min-height:32px}
+  .mb-pg{font-weight:500;color:var(--ink)}
+  body.on-ink .mb-pg{color:#fff}
+  .s{padding-bottom:calc(var(--pad-bot) + 64px)!important}
+}
 /* ── phone layout fixes ── */
 @media (max-width:760px){
   .hb-mail,.hb-soc{display:none!important}
@@ -2475,6 +2491,11 @@ const dots=$$('button',nav); let cur=-1;
       if(near){ pill.classList.add('mag'); pill.style.transform=`translate(${(dx*.18).toFixed(1)}px,${(dy*.3).toFixed(1)}px)`; inner.style.transform=`translate(${(dx*.06).toFixed(1)}px,${(dy*.12).toFixed(1)}px)`; }
       else if(pill.classList.contains('mag')){ pill.classList.remove('mag'); pill.style.transform=''; inner.style.transform=''; } },{passive:true});
     document.addEventListener('pointerleave',()=>{pill.classList.remove('mag');pill.style.transform='';inner.style.transform=''}); } }
+/* phones: socials, email and page number move to a bottom bar */
+{ const mb=document.createElement('footer'); mb.className='m-bar'; mb.setAttribute('aria-label','Contact and page');
+  const soc=$('.hb-soc').cloneNode(true); soc.className='mb-soc'; const mail=$('.hb-mail').cloneNode(true); mail.className='mb-mail';
+  const pg=document.createElement('span'); pg.id='mbPg'; pg.className='mb-pg num';
+  mb.append(soc,mail,pg); document.body.appendChild(mb); }
 let pillT=0, pillTxt='Heli Studio';
 function setPillName(txt){ const box=$('#hbName'), btn=$('#hbBtn'); if(!box||txt===pillTxt)return; pillTxt=txt; clearTimeout(pillT);
   const spans=[...box.children]; spans.slice(0,-1).forEach(x=>x.remove()); const old=box.lastElementChild; if(old){old.className='';old.style.position=''}
@@ -2491,7 +2512,8 @@ function setCurrent(i){if(i===cur)return;cur=i;dots.forEach((d,j)=>d.classList.t
   {const fs=$('#fxSec'),fp=$('#fxPg');if(fs){fs.textContent=`${s.dataset.stage} · ${s.dataset.label}`;fp.textContent=`${pad(i+1)} / ${pad(secs.length)}`}}
   {const n=$('#hsNo'),c=$('#hsSec');if(n){n.textContent=pad(i+1);c.textContent=s.dataset.label;document.body.classList.toggle('on-ink',s.classList.contains('ink'))}}
   setPillName(i===0?'Heli Studio':s.dataset.label); $$('#hbMenu a').forEach((a,j)=>a.classList.toggle('on',j===i));
-  $('#pageNo').textContent=`${pad(i+1)} / ${pad(secs.length)}`;}
+  $('#pageNo').textContent=`${pad(i+1)} / ${pad(secs.length)}`;
+  {const mp=$('#mbPg');if(mp)mp.textContent=`${pad(i+1)} / ${pad(secs.length)}`}}
 let tick=false;
 function onScroll(){if(tick)return;tick=true;requestAnimationFrame(()=>{tick=false;
   const y=innerHeight*.45;let idx=0;secs.forEach((s,i)=>{if(s.getBoundingClientRect().top<=y)idx=i});setCurrent(idx);
