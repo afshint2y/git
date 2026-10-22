@@ -656,11 +656,11 @@ h1,h2,h3,.lead,.nx-t{text-transform:none!important;font-weight:450!important;let
 
 /* round 6: capital section titles with a small black dot, highlighter sweep on hover; squares become dots */
 .sh h2{text-transform:uppercase!important;letter-spacing:-.02em!important;
-  background:linear-gradient(var(--lime),var(--lime)) no-repeat 0 55%/0% 78%;padding:0 .12em;margin-left:-.12em;
+  background:linear-gradient(90deg,rgba(253,240,74,0) 0%,#FEF7A6 45%,#FDF04A 100%) no-repeat 0 55%/0% 78%;padding:0 .12em;margin-left:-.12em;
   transition:background-size .55s var(--ease),transform .9s var(--spring)}
 .sh h2::before{content:"";display:inline-block;width:.2em;height:.2em;border-radius:50%;background:currentColor;vertical-align:.32em;margin-right:.32em}
 .sh h2:hover{background-size:100% 78%}
-.obj h3{justify-self:start;background:linear-gradient(var(--lime),var(--lime)) no-repeat 0 60%/0% 70%;padding:0 .1em;margin-left:-.1em;transition:background-size .5s var(--ease)}
+.obj h3{justify-self:start;background:linear-gradient(90deg,rgba(253,240,74,0) 0%,#FEF7A6 45%,#FDF04A 100%) no-repeat 0 60%/0% 70%;padding:0 .1em;margin-left:-.1em;transition:background-size .5s var(--ease)}
 .obj li:hover h3{background-size:100% 70%}
 .sqb{width:10px;height:10px;aspect-ratio:auto;border-radius:50%;background:var(--ink);margin-top:.55em}
 .obj li{grid-template-columns:10px minmax(0,1fr) 3em minmax(0,1.5fr)}
@@ -727,7 +727,7 @@ h1,h2,h3,.lead,.nx-t{text-transform:none!important;font-weight:450!important;let
 .sol li{padding:clamp(24px,4vh,44px) 0}
 .sol .svc,.sol li.off .svc{background:none;padding:0;border-radius:0;color:var(--ink)}
 .sol .svc h3{display:inline;font-size:clamp(26px,2.3vw,42px);line-height:1.1;letter-spacing:-.035em;
-  background:linear-gradient(var(--lime),var(--lime)) no-repeat 0 62%/0% 62%;transition:background-size .55s var(--ease)}
+  background:linear-gradient(90deg,rgba(253,240,74,0) 0%,#FEF7A6 45%,#FDF04A 100%) no-repeat 0 62%/0% 62%;transition:background-size .55s var(--ease)}
 .sol li:hover .svc h3{background-size:100% 62%}
 .sol .svc p{margin-top:12px;color:var(--text-2)}
 .sol .arrow{font-size:0;align-self:center;height:1px;background:var(--ink);position:relative;transform-origin:left;transform:scaleX(.45);transition:transform .6s var(--ease)}
@@ -928,7 +928,7 @@ h1,h2,h3,.lead,.nx-t{text-transform:none!important;font-weight:450!important;let
 .cap-h h4,.caps h4{font-size:var(--t-label);font-weight:450;letter-spacing:-.03em;color:var(--ink);margin:0}
 .cap-h em{grid-column:2;font-style:normal;font-size:13px;color:var(--text-2)}
 .caps li{padding:0;border-top:0;border-bottom:1px solid var(--line);color:var(--ink)}
-.caps li span{display:inline-block;padding:12px 0;font-size:var(--t-small);background:linear-gradient(var(--lime),var(--lime)) no-repeat 0 60%/0% 55%;transition:background-size .5s var(--ease)}
+.caps li span{display:inline-block;padding:12px 0;font-size:var(--t-small);background:linear-gradient(90deg,rgba(253,240,74,0) 0%,#FEF7A6 45%,#FDF04A 100%) no-repeat 0 60%/0% 55%;transition:background-size .5s var(--ease)}
 .caps li:hover span{background-size:100% 55%}
 @media (max-width:860px){.caps{grid-template-columns:1fr}}
 
@@ -1716,7 +1716,9 @@ body.on-ink .mb-pg{color:#fff}
 @media (max-width:760px){.cover .cv-row{grid-template-columns:1fr}.cover .cv-l,.cover h1{grid-column:1}}
 /* how we start: big title, pill-numbered steps, start card and two call-to-action buttons, validity line */
 .hnx{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);grid-template-areas:"s r" "s c" "f f";grid-template-rows:1fr auto auto;gap:clamp(24px,3vw,56px) clamp(28px,4vw,72px);align-content:start}
-.hnx-steps{grid-area:s;align-self:start}
+.hnx-steps{grid-area:s;align-self:stretch;display:flex;flex-direction:column;margin:0}
+.hnx-steps li{flex:1;align-content:center}
+.hnx-cta{border-radius:999px!important}
 .hnx-steps li{display:grid;grid-template-columns:2.4em minmax(0,1fr);align-items:baseline;gap:12px;padding:clamp(16px,2.2vh,24px) 0;border-bottom:1px solid var(--line);font-size:var(--t-h3);letter-spacing:-.015em}
 .hnx-steps li:last-child{border-bottom:0}
 .hnx-no{font-size:13px;color:var(--mute)}
@@ -1840,6 +1842,8 @@ h3,h4{line-height:1.4}
 
 /* figures keep weight 400 with heading tracking */
 .creds .n,.facts .v,.t-stub .amt,.tc-amt,.amt,.startcard .date,.pkg .stub{letter-spacing:var(--hs-track)!important}
+/* highlights: clear fading into yellow, not flat */
+.hl,.total .row.credit b,.total .row.credit b:last-child{background:linear-gradient(90deg,rgba(253,240,74,0) 0%,#FEF7A6 45%,#FDF04A 100%)!important;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><filter id="fibp" x="-2%" y="-1%" width="104%" height="102%"><feTurbulence type="fractalNoise" baseFrequency="1.2 .06" numOctaves="2" seed="9"/><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter></defs><symbol id="lg" viewBox="0 0 48 43"><path d="M42.2579 15.7705L36.2777 15.8047C35.7697 15.8073 35.2854 15.6104 35.0221 15.1536C34.7563 14.6954 34.8327 14.1743 35.088 13.7384L38.1031 8.59378C39.6889 5.85408 38.7479 2.35036 36.0013 0.768505C33.2547 -0.813353 29.7421 0.125259 28.1561 2.86496L25.195 8.04768C24.9436 8.48745 24.5304 8.8064 24.0026 8.8064C23.4723 8.8064 23.0577 8.47957 22.8063 8.04112L19.8465 2.86365C18.2606 0.125259 14.7479 -0.813353 12 0.768505C9.25337 2.35036 8.31235 5.85408 9.89819 8.59378L12.9173 13.7424C13.174 14.1795 13.2437 14.6967 12.9805 15.1523C12.7146 15.6104 12.2237 15.806 11.7184 15.8021L5.74336 15.7705C2.57162 15.7705 0 18.3356 0 21.4994C0 24.6618 2.57162 27.2282 5.74336 27.2282L11.7236 27.1941C12.2316 27.1914 12.7159 27.3883 12.9792 27.8452C13.245 28.3033 13.1686 28.8245 12.9134 29.2603L9.89819 34.405C8.31235 37.1447 9.25337 40.6484 12 42.2302C14.7466 43.8121 18.2593 42.8735 19.8452 40.1338L22.8063 34.9511C23.0577 34.5113 23.471 34.1923 23.9987 34.1923C24.529 34.1923 24.9436 34.5192 25.195 34.9576L28.1548 40.1351C29.7407 42.8748 33.2534 43.8134 36 42.2315C38.7466 40.6497 39.6876 37.146 38.1018 34.4063L35.0827 29.2577C34.826 28.8206 34.7563 28.3033 35.0195 27.8478C35.2854 27.3896 35.7763 27.1941 36.2816 27.198L42.2566 27.2295C45.4284 27.2295 48 24.6644 48 21.5007C48 18.3383 45.4284 15.7719 42.2566 15.7719L42.2579 15.7705ZM32.1083 24.6526C32.1083 24.6526 32.1492 24.713 32.1557 24.7235C32.4426 25.1593 32.4794 25.7383 32.1992 26.2213C31.9267 26.6913 31.4266 26.9485 30.9173 26.9328C30.9173 26.9328 30.8357 26.9289 30.8186 26.9263C29.725 26.8554 28.5997 27.0956 27.5797 27.6838C26.569 28.2666 25.8017 29.1094 25.316 30.0795C25.316 30.0795 25.2845 30.1451 25.2792 30.1557C25.0449 30.6216 24.5594 30.9432 24 30.9432C23.4551 30.9432 22.9814 30.6387 22.7405 30.1924C22.7405 30.1924 22.7037 30.1201 22.6971 30.1031C22.2115 29.1238 21.4402 28.2718 20.4203 27.685C19.4095 27.1035 18.2935 26.8619 17.209 26.9276C17.209 26.9276 17.1353 26.9328 17.1235 26.9342C16.601 26.9644 16.0798 26.7058 15.8008 26.2226C15.5284 25.7527 15.556 25.1922 15.8232 24.7589C15.8232 24.7589 15.868 24.6907 15.8785 24.6763C16.4865 23.7665 16.8405 22.6756 16.8405 21.5007C16.8405 20.3363 16.4918 19.252 15.893 18.3475C15.893 18.3475 15.8522 18.287 15.8456 18.2766C15.5574 17.8408 15.5219 17.2618 15.8022 16.7788C16.0746 16.3088 16.5747 16.0515 17.084 16.0672C17.084 16.0672 17.1656 16.0712 17.1827 16.0738C18.2764 16.1447 19.4016 15.9044 20.4216 15.3163C21.4323 14.7335 22.1996 13.8907 22.6853 12.9206C22.6853 12.9206 22.7168 12.8549 22.7221 12.8445C22.9564 12.3784 23.4419 12.0568 24.0013 12.0568C24.5462 12.0568 25.0199 12.3614 25.2608 12.8077C25.2608 12.8077 25.2977 12.8799 25.3056 12.897C25.7912 13.8763 26.5624 14.7282 27.5824 15.3151C28.5931 15.8966 29.7091 16.1382 30.7936 16.0725C30.7936 16.0725 30.8673 16.0672 30.8792 16.0659C31.4016 16.0357 31.9228 16.2943 32.2018 16.7774C32.4742 17.2474 32.4466 17.8079 32.1794 18.2411C32.1794 18.2411 32.1346 18.3094 32.1241 18.3239C31.5161 19.2336 31.1621 20.3245 31.1621 21.4994C31.1621 22.6638 31.5108 23.7481 32.1096 24.6526H32.1083Z"/></symbol></svg>
